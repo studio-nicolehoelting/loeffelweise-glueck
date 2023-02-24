@@ -1,0 +1,24 @@
+@import './variables.module.scss';
+
+.navbar {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+
+    > * {
+        color: $pappe;
+        text-decoration: none;
+        margin: 0 2vw;
+        transition: color 0.2s;
+        font-size: 3vmin;
+        font-family: 'TrashHand';
+
+        :hover {
+            color: $pappe_darken;
+        }
+    }
+
+    > a[href='#'] {
+        color: $active;
+    }
+}

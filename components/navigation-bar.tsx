@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from '../styles/navbar.module.scss';
 
 export default function NavigationBar({ active }) {
     return (
-        <div id="navbar">
+        <div id="navbar" className={styles.navbar}>
             <a href={replaceActive('/', active)}>willkommen.</a>
             <a href={replaceActive('/rezepte', active)}>rezepte.</a>
             <a href={replaceActive('/geschichten', active)}>geschichten.</a>

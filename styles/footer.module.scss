@@ -1,0 +1,28 @@
+@import './variables.module.scss';
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    > .datenschutz-impressum,
+    :is(.instagram, .facebook) {
+        color: $pappe;
+        margin-bottom: 0.5vh;
+        text-decoration: none;
+        background-color: $background;
+        padding: 5px;
+        border-radius: 5px;
+
+        :hover {
+            color: $pappe_darken;
+        }
+    }
+
+    > .instagram {
+        margin-right: 0.5vw;
+    }
+}
