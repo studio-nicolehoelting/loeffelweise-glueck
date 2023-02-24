@@ -4,21 +4,26 @@
     margin-top: 2vh;
     display: flex;
     justify-content: center;
+}
 
-    > * {
-        color: $pappe;
-        text-decoration: none;
-        margin: 0 2vw;
-        transition: color 0.2s;
-        font-size: 3vmin;
-        font-family: 'TrashHand';
+.active,
+.inactive {
+    font-family: 'TrashHand';
+    text-decoration: none;
+    margin: 0 2vw;
+    transition: color 0.2s;
+    font-size: 3vmin;
+    font-family: 'TrashHand';
+}
 
-        :hover {
-            color: $pappe_darken;
-        }
-    }
+.active {
+    color: $active;
+}
 
-    > a[href='#'] {
-        color: $active;
+.inactive {
+    color: $pappe;
+
+    :hover {
+        color: $pappe_darken;
     }
 }

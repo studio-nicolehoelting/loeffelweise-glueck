@@ -1,22 +1,37 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../styles/navbar.module.scss';
 
 export default function NavigationBar({ active }) {
+    const menu = [
+        ['/', 'willkommen.'],
+        ['/rezepte', 'rezepte.'],
+        ['/geschichten', 'geschichten.'],
+        ['/nicole_jette', 'nicole & jette.'],
+        ['/loeffelfreunde', 'loeffelfreu(n)de'],
+        ['/leseglueck', 'leseglück.'],
+    ];
     return (
         <div id="navbar" className={styles.navbar}>
-            <a href={replaceActive('/', active)}>willkommen.</a>
-            <a href={replaceActive('/rezepte', active)}>rezepte.</a>
-            <a href={replaceActive('/geschichten', active)}>geschichten.</a>
-            <a href={replaceActive('/nicole_jette', active)}>nicole & jette.</a>
-            <a href={replaceActive('/loeffelfreunde', active)}>
-                löffelfreu(n)de.
-            </a>
-            <a href={replaceActive('/leseglueck', active)}>leseglück.</a>
+            {menu.map(el => {
+                if (el[0] === active)
+                    return (
+                        <p className={styles.active} key={el[1]}>
+                            {el[1]}
+                        </p>
+                    );
+                else
+                    return (
+                        <Link
+                            href={el[0]}
+                            scroll
+                            className={styles.inactive}
+                            key={el[1]}
+                        >
+                            {el[1]}
+                        </Link>
+                    );
+            })}
         </div>
     );
-}
-
-function replaceActive(href: string, active: string) {
-    if (href === active) return '#';
-    return href;
 }
