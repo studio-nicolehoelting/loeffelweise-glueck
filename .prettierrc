@@ -1,0 +1,15 @@
+{
+    "semi": true,
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "useTabs": false,
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["tsconfig.json", ".eslintrc.json", "package.json"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

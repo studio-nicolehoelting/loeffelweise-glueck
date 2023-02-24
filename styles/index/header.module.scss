@@ -1,0 +1,21 @@
+@import '../variables.module.scss';
+
+.header {
+    position: relative;
+    width: 80%;
+    display: block;
+    margin: 1.5cm auto;
+
+    .hobelbankHeader {
+        width: 100%;
+    }
+
+    > span {
+        position: absolute;
+        bottom: 2%;
+        left: 25%;
+        font-size: 8vmin;
+        color: $background;
+        font-family: 'TrashHand';
+    }
+}

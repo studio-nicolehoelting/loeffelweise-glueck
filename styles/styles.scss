@@ -1,0 +1,76 @@
+@import './variables.module.scss';
+@import './fonts.module.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    color: $link_color;
+}
+
+body {
+    background-color: $background;
+}
+
+#navbar {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+
+    > * {
+        color: $pappe;
+        text-decoration: none;
+        margin: 0 2vw;
+        transition: color 0.2s;
+        font-size: 3vmin;
+        font-family: 'TrashHand';
+
+        :hover {
+            color: $pappe_darken;
+        }
+    }
+
+    > a[href='#'] {
+        color: $active;
+    }
+}
+
+#footer {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    > #datenschutz-impressum,
+    :is(#instagram, #facebook) {
+        color: $pappe;
+        margin-bottom: 0.5vh;
+        text-decoration: none;
+        background-color: $background;
+        padding: 5px;
+        border-radius: 5px;
+
+        :hover {
+            color: $pappe_darken;
+        }
+    }
+
+    > #instagram {
+        margin-right: 0.5vw;
+    }
+}
+
+div.scrollTop {
+    position: fixed;
+    right: 2vmin;
+    bottom: 2vmin;
+    font-size: 2.5vw;
+    color: $active;
+    cursor: pointer;
+}
