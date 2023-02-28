@@ -7,7 +7,7 @@ export async function getRezepte() {
             joinPath(process.cwd(), 'asset/rezepte/recipes.json'),
             'utf8'
         )
-    ).slice(0, 1) as Rezept[];
+    ) as Rezept[];
 }
 
 export interface Rezept {
