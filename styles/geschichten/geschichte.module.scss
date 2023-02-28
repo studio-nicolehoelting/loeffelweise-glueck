@@ -1,0 +1,65 @@
+@import '../variables.module.scss';
+
+.geschichte {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1cm;
+    grid-template-areas: 'image text';
+    position: relative;
+
+    &:nth-child(even) {
+        grid-template-areas: 'text image';
+    }
+    > .text {
+        background-color: $pappe;
+        grid-area: text;
+        text-align: center;
+        position: relative;
+
+        .content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 1cm;
+            max-height: 80%;
+
+            h3 {
+                font-size: 3em;
+                font-family: 'TrashHand';
+            }
+        }
+    }
+
+    img,
+    div.img {
+        width: 100%;
+        grid-area: image;
+        position: relative;
+    }
+    div.img {
+        > img.hidden {
+            display: none;
+        }
+        > .back,
+        > .next {
+            color: $active;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            cursor: pointer;
+        }
+        > .back {
+            left: 5px;
+            transform: scaleX(-1) translateY(-50%);
+        }
+        > .next {
+            right: 5px;
+        }
+    }
+}

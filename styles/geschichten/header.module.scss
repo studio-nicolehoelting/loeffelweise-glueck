@@ -1,0 +1,41 @@
+@import '../variables.module.scss';
+
+.header {
+    background: url('/imgs/geschichten/fotoalbum.jpg');
+    width: 90%;
+    padding-top: 45%;
+    background-size: cover;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 0.75cm;
+
+    > span:not(.mehrLesen) {
+        position: absolute;
+        font-size: 6vmin;
+        width: 100%;
+        text-align: center;
+        color: $pappe;
+        font-family: 'TrashHand';
+    }
+    > span:nth-child(1) {
+        top: 80%;
+    }
+    > .mehrLesen {
+        color: $active;
+        position: absolute;
+        bottom: 5px;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%);
+        font-size: 2vmin;
+        cursor: pointer;
+    }
+}
+
+.textExpand {
+    background-color: $pappe;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1cm;
+}
