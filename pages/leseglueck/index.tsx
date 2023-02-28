@@ -1,6 +1,10 @@
 import Head from 'next/head';
-import Geschichte from '../../components/geschichten/geschichte';
+import GeschichteHunger from '../../components/geschichten/texte/hunger';
 import Header from '../../components/leseglueck/header';
+import TextHelloSnow from '../../components/leseglueck/texte/hello-snow';
+import TextNightKitchen from '../../components/leseglueck/texte/night-kitchen';
+import TextSoulfood from '../../components/leseglueck/texte/soulfood';
+import TextWeihnachtenAmsterdam from '../../components/leseglueck/texte/weihnachten-amsterdam';
 import NavigationBar from '../../components/navigation-bar';
 
 export default function NicoleJettePage() {
@@ -20,9 +24,11 @@ export default function NicoleJettePage() {
             <Header />
 
             <div id="geschichtenContainer">
-                <Geschichte id="leseglueck" imgs={['night_kitchen.jpg']}>
-                    <h3>Blaue Stunde. Sternenhimmel. Morgenröte.</h3>
-                </Geschichte>
+                <TextNightKitchen />
+                <TextSoulfood />
+                <TextHelloSnow />
+                <TextWeihnachtenAmsterdam />
+                <GeschichteHunger />
             </div>
         </>
     );
