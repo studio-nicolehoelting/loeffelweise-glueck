@@ -1,0 +1,113 @@
+@import '../variables.module.scss';
+
+.page {
+    .container {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        /* grid-template-columns: auto 3fr; */
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            'img zubereitung'
+            'zutaten kommentar'
+            'tags tags';
+        margin-left: 60px;
+        margin-right: 60px;
+        /* min-height: 80vh; */
+        /* max-height: 100vh; */
+        grid-gap: 1vmin;
+        margin-top: 2.5vmin;
+
+        img {
+            grid-area: img;
+            display: block;
+            /* max-height: 50vh; */
+            max-width: 100%;
+            margin: 0 auto;
+            /* margin-left: 40px; */
+        }
+
+        > *:not(img) {
+            background-color: $pappe;
+            padding: 15px;
+        }
+
+        .zubereitung {
+            grid-area: zubereitung;
+            /* max-height: 50vh; */
+        }
+
+        .zutaten {
+            grid-area: zutaten;
+
+            ul > span {
+                // margin-left: -40px;
+
+                &.sectionHeader {
+                    font-weight: bold;
+                }
+            }
+
+            .zutat {
+                margin-left: 0.7cm;
+            }
+        }
+
+        .kommentar {
+            grid-area: kommentar;
+        }
+
+        .tags {
+            grid-area: tags;
+        }
+    }
+}
+
+.print {
+    .dina4 {
+        width: 210mm;
+        min-height: 297mm;
+        background-color: white;
+        padding: 2cm;
+
+        * {
+            max-width: 100%;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 50pt;
+            font-family: 'TrashHand';
+            margin-top: -1.5cm;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                'img zutaten'
+                'zubereitung zubereitung'
+                'kommentar kommentar';
+            grid-gap: 1cm;
+            margin-top: 1cm;
+
+            img {
+                width: 100%;
+                grid-area: img;
+            }
+            .zutaten {
+                grid-area: zutaten;
+
+                .zutat {
+                    margin-left: 0.7cm;
+                }
+            }
+            .zubereitung {
+                grid-area: zubereitung;
+            }
+            .kommentar {
+                grid-area: kommentar;
+            }
+        }
+    }
+}

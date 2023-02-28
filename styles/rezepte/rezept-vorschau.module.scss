@@ -1,0 +1,103 @@
+@import '../variables.module.scss';
+
+.recipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1cm;
+    grid-template-areas: 'image text';
+    position: relative;
+
+    &.even {
+        grid-template-areas: 'text image';
+    }
+
+    :nth-child(even) {
+        grid-template-areas: 'text image';
+    }
+
+    > .text {
+        background-color: $pappe;
+        padding: 10px;
+        grid-area: text;
+    }
+
+    img {
+        width: 100%;
+        grid-area: image;
+        position: relative;
+        z-index: 1;
+    }
+
+    &.witzig::after {
+        content: '';
+        display: inline-block;
+        grid-area: image;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        background-image: url('/imgs/rezepte/witzig.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80%;
+    }
+    * {
+        color: $background;
+        position: relative;
+    }
+    > div {
+        > h3 {
+            font-size: 7vmin;
+            text-align: center;
+            margin-top: 20%;
+            font-weight: 300;
+            font-family: 'TrashHand';
+        }
+        > a {
+            padding: 1vmin;
+            /* background-color: var(--pappe_darken); */
+            border: 1px solid #333;
+            text-decoration: none;
+            font-weight: 200;
+            font-style: italic;
+            display: block;
+            text-align: center;
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 30%;
+            font-size: 3vmin;
+            transition: background-color 0.5s;
+
+            > span {
+                font-family: 'TrashHand';
+                font-style: normal;
+                font-size: 4vmin;
+            }
+        }
+        > .tags {
+            position: absolute;
+            bottom: 2vh;
+            left: 0;
+            right: 0;
+            /* padding-top: 10%; */
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            > * {
+                margin: 0 5px;
+                font-size: 2vmin;
+                background-color: transparent;
+                border: none;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}

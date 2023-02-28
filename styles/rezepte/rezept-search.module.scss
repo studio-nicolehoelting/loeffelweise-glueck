@@ -1,0 +1,26 @@
+@import '../variables.module.scss';
+
+.searchContainer {
+    background-color: $pappe;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1cm;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2cm;
+}
+.searchContainer * {
+    font-size: 2rem;
+}
+
+.searchContainer .delete-search {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.sortOrder {
+    margin-right: 10px;
+}
