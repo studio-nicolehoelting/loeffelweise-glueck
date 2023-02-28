@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '../../styles/geschichten/geschichte.module.scss';
 import { Scrollbar } from 'react-scrollbars-custom';
 
-export default function Geschichte({ children, id, imgs, title }) {
+export default function Geschichte({ children, id, imgs }) {
     const [shownImg, setShownImg] = useState(0);
 
     return (
@@ -42,10 +42,7 @@ export default function Geschichte({ children, id, imgs, title }) {
             )}
             <div className={styles.text}>
                 <Scrollbar>
-                    <div className={styles.content}>
-                        <h3>{title}</h3>
-                        {children}
-                    </div>
+                    <div className={styles.content}>{children}</div>
                 </Scrollbar>
             </div>
         </div>

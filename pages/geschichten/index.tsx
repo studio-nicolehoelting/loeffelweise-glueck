@@ -24,8 +24,8 @@ export default function GeschichtenPage() {
                 <Geschichte
                     id="weihnachten"
                     imgs={['mini.jpg', '1.jpg', '2.jpg']}
-                    title="Geschichte"
                 >
+                    <h3>Geschichte</h3>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Saepe deserunt fugit, suscipit beatae, fugiat repellendus
                     recusandae tempora maxime dolore explicabo voluptatibus
