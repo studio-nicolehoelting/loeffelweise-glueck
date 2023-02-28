@@ -7,6 +7,7 @@ import RezeptVorschau from './rezept-vorschau';
 export default function RezeptSearch({ rezepte }) {
     const [sort, setSort] = useState(0);
     const [search, setSearch] = React.useState('');
+    const [limit, setLimit] = useState(10);
 
     const router = useRouter();
 
@@ -139,6 +140,19 @@ export default function RezeptSearch({ rezepte }) {
         return data;
     }
 
+    function limitData(data, limit) {
+        return [data.slice(0, limit), limit <= data.length];
+    }
+
+    const [rezepteAusgabe, limited] = limitData(
+        sortData(filterRezepte(rezepteJSON), sort),
+        limit
+    );
+
+    function loadMore() {
+        setLimit(limit + 10);
+    }
+
     return (
         <>
             <div id="searchContainer" className={styles.searchContainer}>
@@ -181,7 +195,7 @@ export default function RezeptSearch({ rezepte }) {
                     </button>
                 </span>
             </div>
-            {sortData(filterRezepte(rezepteJSON), sort).map((r: Rezept, i) => (
+            {rezepteAusgabe.map((r: Rezept, i) => (
                 <RezeptVorschau
                     link={r.link}
                     rezepte={rezepte}
@@ -189,6 +203,13 @@ export default function RezeptSearch({ rezepte }) {
                     key={r.link}
                 />
             ))}
+            {limited ? (
+                <button className={styles.loadMore} onClick={loadMore}>
+                    Mehr Rezepte Laden...
+                </button>
+            ) : (
+                ''
+            )}
         </>
     );
 }

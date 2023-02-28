@@ -24,3 +24,16 @@
 .sortOrder {
     margin-right: 10px;
 }
+
+.loadMore {
+    background-color: $pappe;
+    border: none;
+    padding: 20px;
+    font-size: 2rem;
+    font-family: 'TrashHand';
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1cm;
+    width: 90%;
+    cursor: pointer;
+}
