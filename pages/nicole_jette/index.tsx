@@ -1,7 +1,14 @@
 import Head from 'next/head';
-import Geschichte from '../../components/geschichten/geschichte';
+import GeschichteHunger from '../../components/geschichten/texte/hunger';
 import NavigationBar from '../../components/navigation-bar';
 import Header from '../../components/nicole_jette/header';
+import TextAntrieb from '../../components/nicole_jette/texte/antrieb';
+import TextBasics from '../../components/nicole_jette/texte/basics';
+import TextHomemade from '../../components/nicole_jette/texte/homemade';
+import TextJette from '../../components/nicole_jette/texte/jette';
+import TextLoeffelGlueck from '../../components/nicole_jette/texte/loeffel-glueck';
+import TextNicole from '../../components/nicole_jette/texte/nicole';
+import TextOpasGarten from '../../components/nicole_jette/texte/opas-garten';
 
 export default function NicoleJettePage() {
     return (
@@ -20,9 +27,14 @@ export default function NicoleJettePage() {
             <Header />
 
             <div id="geschichtenContainer">
-                <Geschichte id="nicole_jette" imgs={['nicole.jpg']}>
-                    <h3>JETTE ÜBER NICOLE:</h3>
-                </Geschichte>
+                <TextNicole />
+                <TextJette />
+                <TextLoeffelGlueck />
+                <TextBasics />
+                <TextOpasGarten />
+                <TextAntrieb />
+                <TextHomemade />
+                <GeschichteHunger />
             </div>
         </>
     );
