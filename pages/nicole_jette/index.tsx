@@ -20,10 +20,7 @@ export default function NicoleJettePage() {
             <Header />
 
             <div id="geschichtenContainer">
-                <Geschichte
-                    id="nicole_jette/jette_nicole"
-                    imgs={['nicole.jpg']}
-                >
+                <Geschichte id="nicole_jette" imgs={['nicole.jpg']}>
                     <h3>JETTE ÜBER NICOLE:</h3>
                 </Geschichte>
             </div>
