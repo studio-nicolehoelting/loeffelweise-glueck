@@ -22,7 +22,7 @@ export default function GeschichtenPage() {
 
             <div id="geschichtenContainer">
                 <Geschichte
-                    id="weihnachten"
+                    id="geschichten/weihnachten"
                     imgs={['mini.jpg', '1.jpg', '2.jpg']}
                 >
                     <h3>Geschichte</h3>

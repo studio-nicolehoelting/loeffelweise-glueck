@@ -8,16 +8,12 @@ export default function Geschichte({ children, id, imgs }) {
     return (
         <div className={styles.geschichte}>
             {imgs.length <= 1 ? (
-                <img alt={id} src={`/imgs/geschichten/${id}/${imgs[0]}`} />
+                <img alt={id} src={`/imgs/${id}/${imgs[0]}`} />
             ) : (
                 <div className={styles.img}>
                     {imgs
                         .map((img, i) => (
-                            <img
-                                key={i}
-                                alt={img}
-                                src={`/imgs/geschichten/${id}/${img}`}
-                            />
+                            <img key={i} alt={img} src={`/imgs/${id}/${img}`} />
                         ))
                         .find((img, i) => i === shownImg)}
                     <span
