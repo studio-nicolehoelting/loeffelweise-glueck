@@ -73,7 +73,11 @@ export default function Rezept({
             ) : (
                 <>
                     <div className={styles.page}>{displayComp}</div>
-                    <button onClick={printRezept}>
+                    <button
+                        onClick={printRezept}
+                        className={styles.printBtn}
+                        title="Rezept ausdrucken"
+                    >
                         <i className="fas fa-print" />
                     </button>
                 </>

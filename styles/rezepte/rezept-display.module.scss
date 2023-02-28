@@ -111,3 +111,21 @@
         }
     }
 }
+
+.printBtn {
+    position: fixed;
+    right: 0.5cm;
+    bottom: 0.5cm;
+    width: 2cm;
+    height: 2cm;
+    background-color: $pappe_darken;
+    border: none;
+    border-radius: 1cm;
+    font-size: 1cm;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+        background-color: $link_color;
+    }
+}
