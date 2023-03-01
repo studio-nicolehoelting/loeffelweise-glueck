@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../../components/footer';
 import GeschichteHunger from '../../components/geschichten/texte/hunger';
 import NavigationBar from '../../components/navigation-bar';
 import Header from '../../components/nicole_jette/header';
@@ -9,6 +10,7 @@ import TextJette from '../../components/nicole_jette/texte/jette';
 import TextLoeffelGlueck from '../../components/nicole_jette/texte/loeffel-glueck';
 import TextNicole from '../../components/nicole_jette/texte/nicole';
 import TextOpasGarten from '../../components/nicole_jette/texte/opas-garten';
+import ScrollTopBtn from '../../components/scroll-top-button';
 
 export default function NicoleJettePage() {
     return (
@@ -36,6 +38,9 @@ export default function NicoleJettePage() {
                 <TextHomemade />
                 <GeschichteHunger />
             </div>
+
+            <ScrollTopBtn />
+            <Footer />
         </>
     );
 }

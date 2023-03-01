@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../../components/footer';
 import GeschichteHunger from '../../components/geschichten/texte/hunger';
 import Header from '../../components/leseglueck/header';
 import TextHelloSnow from '../../components/leseglueck/texte/hello-snow';
@@ -6,6 +7,7 @@ import TextNightKitchen from '../../components/leseglueck/texte/night-kitchen';
 import TextSoulfood from '../../components/leseglueck/texte/soulfood';
 import TextWeihnachtenAmsterdam from '../../components/leseglueck/texte/weihnachten-amsterdam';
 import NavigationBar from '../../components/navigation-bar';
+import ScrollTopBtn from '../../components/scroll-top-button';
 
 export default function NicoleJettePage() {
     return (
@@ -30,6 +32,9 @@ export default function NicoleJettePage() {
                 <TextWeihnachtenAmsterdam />
                 <GeschichteHunger />
             </div>
+
+            <ScrollTopBtn />
+            <Footer />
         </>
     );
 }

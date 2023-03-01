@@ -17,6 +17,7 @@ import GeschichteWaldpicknick from '../../components/geschichten/texte/waldpickn
 import GeschichteWeihnachten from '../../components/geschichten/texte/weihnachten';
 import GeschichteZettelZ from '../../components/geschichten/texte/zettel-z';
 import NavigationBar from '../../components/navigation-bar';
+import ScrollTopBtn from '../../components/scroll-top-button';
 
 export default function GeschichtenPage() {
     return (
@@ -52,6 +53,7 @@ export default function GeschichtenPage() {
                 <GeschichteHunger />
             </div>
 
+            <ScrollTopBtn />
             <Footer />
         </>
     );

@@ -4,6 +4,7 @@ import Footer from '../../components/footer';
 import NavigationBar from '../../components/navigation-bar';
 import Header from '../../components/rezepte/header';
 import RezeptSearch from '../../components/rezepte/rezept-search';
+import ScrollTopBtn from '../../components/scroll-top-button';
 import { getRezepte } from '../../util/get-rezepte';
 
 export default function RezeptePage({ rezepte }) {
@@ -15,6 +16,7 @@ export default function RezeptePage({ rezepte }) {
             <NavigationBar active="/rezepte" />
             <Header />
             <RezeptSearch rezepte={rezepte} />
+            <ScrollTopBtn />
             <Footer />
         </>
     );

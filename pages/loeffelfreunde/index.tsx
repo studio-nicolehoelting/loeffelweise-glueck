@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../../components/footer';
 import GeschichteHunger from '../../components/geschichten/texte/hunger';
 import Header from '../../components/loeffelfreunde/header';
 import TextBowls from '../../components/loeffelfreunde/texte/bowls';
@@ -9,6 +10,7 @@ import TextRotkohlEier from '../../components/loeffelfreunde/texte/rotkohl-eier'
 import TextSpoonies from '../../components/loeffelfreunde/texte/spoonies';
 import TextWeisseWeihnacht from '../../components/loeffelfreunde/texte/weisse-weihnacht';
 import NavigationBar from '../../components/navigation-bar';
+import ScrollTopBtn from '../../components/scroll-top-button';
 
 export default function LoeffelfreundePage() {
     return (
@@ -37,6 +39,9 @@ export default function LoeffelfreundePage() {
 
                 <GeschichteHunger />
             </div>
+
+            <ScrollTopBtn />
+            <Footer />
         </>
     );
 }
