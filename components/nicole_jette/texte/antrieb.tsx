@@ -64,8 +64,8 @@ export default function TextAntrieb() {
                 lecker(at)loeffelweise-glueck.de
             </a>{' '}
             <br />
-            <a href="instagram.com/loeffelweise.glueck" target="_blank">
-                instagram.com/loeffelweise.glueck
+            <a href="https://instagram.com/loeffelweise.glueck" target="_blank">
+                https://instagram.com/loeffelweise.glueck
             </a>
             <br />
             <a
