@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-import variables from '../styles/variables.module.scss';
 import NavigationBar from '../components/navigation-bar';
 import Head from 'next/head';
 import Footer from '../components/footer';
