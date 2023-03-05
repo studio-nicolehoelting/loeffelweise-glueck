@@ -4,7 +4,7 @@ import styles from '../../styles/rezepte/rezept-search.module.scss';
 import { Rezept } from '../../util/get-rezepte';
 import RezeptVorschau from './rezept-vorschau';
 
-export default function RezeptSearch({ rezepte }) {
+export default function RezeptSearch({ rezepte, witzig = false }) {
     const [sort, setSort] = useState(0);
     const [search, setSearch] = React.useState('');
     const [limit, setLimit] = useState(10);
@@ -70,33 +70,35 @@ export default function RezeptSearch({ rezepte }) {
     const rezepteJSON = JSON.parse(rezepte);
 
     function filterRezepte(rezepte: Rezept[]) {
-        return rezepte.filter(e => {
-            let ret = true;
-            const queries = search.split(' ');
-            queries.forEach(ee => {
-                let isTag = false;
-                if (/^#/.test(ee)) {
-                    ee = ee.replace(/^#/, '');
-                    isTag = true;
-                }
-                const r = new RegExp(
-                    ee.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
-                    'i'
-                );
-                if (
-                    !(
-                        (r.test(e.name) && isTag == false) ||
-                        (isTag == true &&
-                            e.tags
-                                .map(eee => r.test(eee))
-                                .some(eee => eee == true))
+        return rezepte
+            .filter(rezept => {
+                let ret = true;
+                const queries = search.split(' ');
+                queries.forEach(query => {
+                    let isTag = false;
+                    if (/^#/.test(query)) {
+                        query = query.replace(/^#/, '');
+                        isTag = true;
+                    }
+                    const r = new RegExp(
+                        query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+                        'i'
+                    );
+                    if (
+                        !(
+                            (r.test(rezept.name) && isTag == false) ||
+                            (isTag == true &&
+                                rezept.tags
+                                    .map(eee => r.test(eee))
+                                    .some(eee => eee == true))
+                        )
                     )
-                )
-                    ret = false;
-                // if(!((r.test(e.name) && isTag == false && isAuthor == false) || ((r.test(e.author) && isTag == false) && ((e.author != "unnamedDE" || isAuthor) || search.toLowerCase() == "unnamedde")) || (e.keywords.map(eee => r.test(eee)).some(eee => eee == true) && isAuthor == false))) ret = false;
-            });
-            return ret;
-        });
+                        ret = false;
+                    // if(!((r.test(e.name) && isTag == false && isAuthor == false) || ((r.test(e.author) && isTag == false) && ((e.author != "unnamedDE" || isAuthor) || search.toLowerCase() == "unnamedde")) || (e.keywords.map(eee => r.test(eee)).some(eee => eee == true) && isAuthor == false))) ret = false;
+                });
+                return ret;
+            })
+            .filter(rezept => rezept.witzig || !witzig);
         //   .filter(e => e.witzig == true || eeWitzig == false);;
     }
 
@@ -201,6 +203,7 @@ export default function RezeptSearch({ rezepte }) {
                     rezepte={rezepte}
                     index={i}
                     key={r.link}
+                    witzig={witzig}
                 />
             ))}
             {limited ? (

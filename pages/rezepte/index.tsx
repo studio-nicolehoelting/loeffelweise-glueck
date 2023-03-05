@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../../components/footer';
 import NavigationBar from '../../components/navigation-bar';
 import Header from '../../components/rezepte/header';
@@ -8,6 +8,13 @@ import ScrollTopBtn from '../../components/scroll-top-button';
 import { getRezepte } from '../../util/get-rezepte';
 
 export default function RezeptePage({ rezepte }) {
+    const [witzig, setWitzig] = useState(false);
+
+    function toggleWitzig(ev: Event) {
+        ev.preventDefault();
+        setWitzig(!witzig);
+    }
+
     return (
         <>
             <Head>
@@ -15,8 +22,8 @@ export default function RezeptePage({ rezepte }) {
             </Head>
             <NavigationBar active="/rezepte" />
             <Header />
-            <RezeptSearch rezepte={rezepte} />
-            <ScrollTopBtn />
+            <RezeptSearch rezepte={rezepte} witzig={witzig} />
+            <ScrollTopBtn contextFn={toggleWitzig} />
             <Footer />
         </>
     );

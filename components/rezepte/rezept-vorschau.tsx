@@ -1,23 +1,32 @@
 import React from 'react';
 import { Rezept } from '../../util/get-rezepte';
-import style from '../../styles/rezepte/rezept-vorschau.module.scss';
+import styles from '../../styles/rezepte/rezept-vorschau.module.scss';
 
-export default function RezeptVorschau({ link, rezepte, index }) {
+export default function RezeptVorschau({
+    link,
+    rezepte,
+    index,
+    witzig = false,
+}) {
     const { name, tags } = JSON.parse(rezepte).find(
         (r: Rezept) => r.link === link
     );
 
     return (
         <div
-            className={style.recipe + (index % 2 === 0 ? ' ' + style.even : '')}
+            className={
+                styles.recipe +
+                (index % 2 === 0 ? ' ' + styles.even : '') +
+                (witzig ? ' ' + styles.witzig : '')
+            }
         >
             <img src={`/rezepte/imgs/${link}.jpg`} alt={name} />
-            <div className={style.text}>
+            <div className={styles.text}>
                 <h3>{name}</h3>
                 <a href={link}>
                     Rezept zum <span>Löffelglück...</span>
                 </a>
-                <div className={style.tags}>
+                <div className={styles.tags}>
                     {tags.map((t: string) => (
                         <a
                             key={t}

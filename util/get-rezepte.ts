@@ -14,4 +14,5 @@ export interface Rezept {
     name: string;
     link: string;
     tags: string[];
+    witzig?: boolean;
 }
