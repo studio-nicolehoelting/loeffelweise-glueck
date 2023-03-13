@@ -9,6 +9,7 @@ import Head from 'next/head';
 
 import stylesNavbar from '../../styles/navbar.module.scss';
 import styles from '../../styles/rezepte/rezept-display.module.scss';
+import MetaTags, { MetaData } from '../../components/meta-tags';
 
 export default function Rezept({
     name,
@@ -63,11 +64,16 @@ export default function Rezept({
         </div>
     );
 
+    const meta: MetaData = {
+        title: `${name} - Löffelweise Glück`,
+        description: `Viel Spaß beim Nachmachen!`,
+        url: `https://loeffelweise-glueck.de/rezepte/${link}/`,
+        img: `https://loeffelweise-glueck.de/rezepte/imgs/${link}.jpg`,
+    };
+
     return (
         <>
-            <Head>
-                <title>{`${name} - Löffelweise Glück`}</title>
-            </Head>
+            <MetaTags meta={meta} />
             {print ? (
                 <div className={styles.print}>{printComp}</div>
             ) : (
