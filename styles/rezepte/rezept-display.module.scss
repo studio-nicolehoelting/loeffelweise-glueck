@@ -1,5 +1,7 @@
 @import '../variables.module.scss';
 
+$local_mobile_max_width: calc($mobile_max_width * 1.2);
+
 .page {
     .container {
         display: grid;
@@ -10,12 +12,24 @@
             'img zubereitung'
             'zutaten kommentar'
             'tags tags';
-        margin-left: 60px;
-        margin-right: 60px;
+        margin-left: 5vw;
+        margin-right: 5vw;
         /* min-height: 80vh; */
         /* max-height: 100vh; */
         grid-gap: 1vmin;
         margin-top: 2.5vmin;
+
+        @media (max-width: $local_mobile_max_width) {
+            grid-template-columns: auto;
+            /* grid-template-columns: auto 3fr; */
+            grid-template-rows: repeat(5, auto);
+            grid-template-areas:
+                'img'
+                'zubereitung'
+                'zutaten'
+                'kommentar'
+                'tags';
+        }
 
         img {
             grid-area: img;
@@ -23,6 +37,8 @@
             /* max-height: 50vh; */
             max-width: 100%;
             margin: 0 auto;
+            height: 100%;
+            object-fit: contain;
             /* margin-left: 40px; */
         }
 
