@@ -23,18 +23,20 @@ export default function RezeptVorschau({
             <img src={`/rezepte/imgs/${link}.jpg`} alt={name} />
             <div className={styles.text}>
                 <h3>{name}</h3>
-                <a href={link}>
-                    Rezept zum <span>Löffelglück...</span>
-                </a>
-                <div className={styles.tags}>
-                    {tags.map((t: string) => (
-                        <a
-                            key={t}
-                            href={`.?search=${encodeURIComponent(`#${t}`)}`}
-                        >
-                            #{t}
-                        </a>
-                    ))}
+                <div>
+                    <a href={link} className={styles['zum-rezept']}>
+                        Rezept zum <span>Löffelglück...</span>
+                    </a>
+                    <div className={styles.tags}>
+                        {tags.map((t: string) => (
+                            <a
+                                key={t}
+                                href={`.?search=${encodeURIComponent(`#${t}`)}`}
+                            >
+                                #{t}
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
