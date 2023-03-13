@@ -183,7 +183,7 @@ export default function RezeptSearch({ rezepte, witzig = false }) {
                         className={styles.search}
                         placeholder="#Sommer"
                         value={search}
-                        autoFocus
+                        // autoFocus
                         onInput={changeSearchEvent}
                     />
                     <button
