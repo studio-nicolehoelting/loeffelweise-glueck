@@ -180,7 +180,7 @@ export default function RezeptSearch({ rezepte, witzig = false }) {
                     <input
                         type="text"
                         id="search"
-                        className="deletable"
+                        className={styles.search}
                         placeholder="#Sommer"
                         value={search}
                         autoFocus
