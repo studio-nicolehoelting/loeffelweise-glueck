@@ -23,7 +23,7 @@ export default function RezeptePage({ rezepte }) {
             <NavigationBar active="/rezepte" />
             <Header />
             <RezeptSearch rezepte={rezepte} witzig={witzig} />
-            <ScrollTopBtn contextFn={toggleWitzig} />
+            <ScrollTopBtn contextFn={toggleWitzig} doubleFn={toggleWitzig} />
             <Footer />
         </>
     );
