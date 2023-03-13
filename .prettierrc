@@ -6,7 +6,7 @@
     "tabWidth": 4,
     "overrides": [
         {
-            "files": ["tsconfig.json", ".eslintrc.json", "package.json"],
+            "files": ["tsconfig.json", "*.json"],
             "options": {
                 "tabWidth": 2
             }
