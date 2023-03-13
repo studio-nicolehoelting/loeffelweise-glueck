@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://loeffelweise-glueck.de
+
+# Sitemaps
+Sitemap: https://loeffelweise-glueck.de/sitemap.xml
