@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "GitHub.remotehub",
+    "eamodio.gitlens",
+    "ritwickdey.LiveServer",
+    "esbenp.prettier-vscode"
+  ],
+  "unwantedRecommendations": []
+}
