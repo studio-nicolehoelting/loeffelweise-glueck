@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteMaus() {
     return (
-        <Geschichte id="geschichten/maus" imgs={['maus.jpg']}>
+        <TextWithImageItem id="geschichten/maus" imgs={['maus.jpg']}>
             El 7 de marzo 2021
             <h3>DIE SENDUNG MIT DER MAUS</h3>
             celebra el 50. cumpleaños.
@@ -72,6 +72,6 @@ export default function GeschichteMaus() {
             <a href="/rezepte/?search=%2523maus" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

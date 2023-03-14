@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from '../../components/footer';
-import GeschichteHunger from '../../components/geschichten/texte/hunger';
+import TextHunger from '../../components/text-items/hunger';
 import Header from '../../components/leseglueck/header';
 import TextHelloSnow from '../../components/leseglueck/texte/hello-snow';
 import TextNightKitchen from '../../components/leseglueck/texte/night-kitchen';
@@ -30,7 +30,7 @@ export default function NicoleJettePage() {
                 <TextSoulfood />
                 <TextHelloSnow />
                 <TextWeihnachtenAmsterdam />
-                <GeschichteHunger />
+                <TextHunger />
             </div>
 
             <ScrollTopBtn />

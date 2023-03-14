@@ -1,6 +1,6 @@
-@import '../variables.module.scss';
+@import './variables.module.scss';
 
-.geschichte {
+.item {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;

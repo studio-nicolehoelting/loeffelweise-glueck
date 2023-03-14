@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextHelloSnow() {
     return (
-        <Geschichte id="leseglueck" imgs={['hello_snow.jpg']}>
+        <TextWithImageItem id="leseglueck" imgs={['hello_snow.jpg']}>
             <h3>WEISS. WINTER. WEIHNACHTEN.</h3>
             <br />
             <br />
@@ -115,6 +115,6 @@ export default function TextHelloSnow() {
             Zuhause einzukuscheln, um dort zu "Kochen. Lesen. Genießen." <br />
             Diese Rezension stellt ganz allein unseren persönlichen Eindruck und
             unsere eigene Meinung dar. <br />
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

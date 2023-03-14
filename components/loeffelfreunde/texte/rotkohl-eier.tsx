@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextRotkohlEier() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['rotkohl-eier.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['rotkohl-eier.jpg']}>
             DIY - Eier färben:
             <br />
             <br />
@@ -42,6 +42,6 @@ export default function TextRotkohlEier() {
             <br />
             <br />
             Frohe Ostern!
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

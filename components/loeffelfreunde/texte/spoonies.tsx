@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextSpoonies() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['spoonies.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['spoonies.jpg']}>
             <h3>LAUTER LECKERE LÖFFEL!</h3>
             <br />
             Kakao, Anis, Salz & Pfeffer, Hafer... <br />
@@ -31,6 +31,6 @@ export default function TextSpoonies() {
             <a href="/rezepte/?search=%2523spoonies" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

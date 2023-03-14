@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteHobelbank() {
     return (
-        <Geschichte id="geschichten/hobelbank" imgs={['hobelbank.jpg']}>
+        <TextWithImageItem id="geschichten/hobelbank" imgs={['hobelbank.jpg']}>
             <h3>WIE URUROPA JOSEFS HOBELBANK</h3>
             <br />
             den Weg zu uns in die Küche fand....
@@ -38,6 +38,6 @@ export default function GeschichteHobelbank() {
             <a href="/rezepte/?search=%2523hobel" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

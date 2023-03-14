@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextJette() {
     return (
-        <Geschichte id="nicole_jette" imgs={['jette.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['jette.jpg']}>
             <h3>NICOLE ÜBER JETTE:</h3>
             <br />
             Was mir spontan zu Jette einfällt?
@@ -69,6 +69,6 @@ export default function TextJette() {
             Weg bestimmte. <br />
             Mit Maßeinheiten kennt sie sich nicht nur in der Küche aus, aber
             eben auch - Löffel für Löffel. Welch GLÜCK für uns!
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

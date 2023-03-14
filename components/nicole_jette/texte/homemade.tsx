@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextHomemade() {
     return (
-        <Geschichte id="nicole_jette" imgs={['homemade.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['homemade.jpg']}>
             <h3>EST. 2020</h3>
             <br />
             <br />
@@ -46,6 +46,6 @@ export default function TextHomemade() {
             Spaß! Die gemeinsame Zeit genießen wir! Gespannt sind wir auf das,
             was sich aus unserem kleinen Projekt - EST. 2020 - entwickeln
             wird...
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

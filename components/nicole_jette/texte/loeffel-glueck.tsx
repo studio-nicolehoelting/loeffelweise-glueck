@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextLoeffelGlueck() {
     return (
-        <Geschichte id="nicole_jette" imgs={['loeffel_glueck.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['loeffel_glueck.jpg']}>
             <h3>DARUM...</h3>
             <br />
             ...konnte es kein anderer Name für unseren Blog sein...
@@ -39,6 +39,6 @@ export default function TextLoeffelGlueck() {
             <br />
             {/* <!-- Welch GLÜCK für uns... --> */}
             Viel mehr als Glück!
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

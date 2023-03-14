@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteWaldpicknick() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="geschichten/waldpicknick"
             imgs={[
                 '0.jpg',
@@ -61,6 +61,6 @@ export default function GeschichteWaldpicknick() {
             <a href="/rezepte/?search=%2523picknick" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

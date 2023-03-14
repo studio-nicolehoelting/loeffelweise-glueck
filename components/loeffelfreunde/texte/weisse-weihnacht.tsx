@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextWeisseWeihnacht() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['weisse_weihnacht.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['weisse_weihnacht.jpg']}>
             DIY - der etwas andere Präsentkorb:
             <br />
             <br />
@@ -27,6 +27,6 @@ export default function TextWeisseWeihnacht() {
             <br />
             Und der Traum der weißen Weihnacht wird Wirklichkeit! <br />
             MERRY XMAS
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

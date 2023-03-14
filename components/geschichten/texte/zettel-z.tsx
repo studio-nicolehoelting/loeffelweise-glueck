@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteZettelZ() {
     return (
-        <Geschichte id="geschichten/zettel-z" imgs={['zettel-z.jpg']}>
+        <TextWithImageItem id="geschichten/zettel-z" imgs={['zettel-z.jpg']}>
             <h3>EINZIGARTIG...</h3>
             <br />
             <br />
@@ -58,6 +58,6 @@ export default function GeschichteZettelZ() {
             <a href="/rezepte/?search=%2523zettelZ" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

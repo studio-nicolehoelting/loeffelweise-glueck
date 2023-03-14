@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextAntrieb() {
     return (
-        <Geschichte id="nicole_jette" imgs={['antrieb.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['antrieb.jpg']}>
             Auf dem (Küchen-)BODEN der Tatsachen <br />
             liegt eindeutig zu wenig <br />
             <br />
@@ -74,6 +74,6 @@ export default function TextAntrieb() {
             >
                 https://www.facebook.com/Löffelweise-Glück-101153131954283
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

@@ -5,7 +5,7 @@ import GeschichteGlueckAuf from '../../components/geschichten/texte/glueck-auf';
 import GeschichteGruenkohl from '../../components/geschichten/texte/gruenkohl';
 import GeschichteHai from '../../components/geschichten/texte/hai';
 import GeschichteHobelbank from '../../components/geschichten/texte/hobelbank';
-import GeschichteHunger from '../../components/geschichten/texte/hunger';
+import TextHunger from '../../components/text-items/hunger';
 import GeschichteKrimidinner from '../../components/geschichten/texte/krimidinner';
 import GeschichteLavendel from '../../components/geschichten/texte/lavendel';
 import GeschichteMaus from '../../components/geschichten/texte/maus';
@@ -50,7 +50,7 @@ export default function GeschichtenPage() {
                 <GeschichteSchweinchen />
                 <GeschichteKrimidinner />
                 <GeschichteHai />
-                <GeschichteHunger />
+                <TextHunger />
             </div>
 
             <ScrollTopBtn />

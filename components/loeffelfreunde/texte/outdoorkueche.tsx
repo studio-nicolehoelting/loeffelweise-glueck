@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextOutdoorkueche() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="loeffelfreunde/outdoorkueche"
             imgs={[
                 '0.jpg',
@@ -41,6 +41,6 @@ export default function TextOutdoorkueche() {
             gemütlich, denn unter der Solar-Lichterkette kann man bis lange in
             die Nacht hinein Karten spielen, quatschen, lachen... Glück
             genießen...
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

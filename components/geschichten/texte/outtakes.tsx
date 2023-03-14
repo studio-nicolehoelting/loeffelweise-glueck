@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteOuttakes() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="geschichten/outtakes"
             imgs={['0.jpg', '1.jpg', '2.jpg']}
         >
@@ -45,6 +45,6 @@ export default function GeschichteOuttakes() {
             <a href="/rezepte/?search=%2523outtakes" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteMichel() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="geschichten/michel"
             imgs={[
                 '0.jpg',
@@ -130,6 +130,6 @@ export default function GeschichteMichel() {
             <a href="/rezepte/?search=%2523schweden" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

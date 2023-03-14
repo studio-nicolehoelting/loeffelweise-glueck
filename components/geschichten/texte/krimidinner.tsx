@@ -1,8 +1,11 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteKrimidinner() {
     return (
-        <Geschichte id="geschichten/krimidinner" imgs={['krimidinner.jpg']}>
+        <TextWithImageItem
+            id="geschichten/krimidinner"
+            imgs={['krimidinner.jpg']}
+        >
             <h3>DAS BILDNIS DER LADY VIOLET</h3>
             <br />
             <br />
@@ -97,6 +100,6 @@ export default function GeschichteKrimidinner() {
             <a href="/rezepte/?search=%2523krimidinner" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

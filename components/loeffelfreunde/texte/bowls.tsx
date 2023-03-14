@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextBowls() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['bowls.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['bowls.jpg']}>
             <h3>BOWLS</h3>
             <br />
             <br />
@@ -35,6 +35,6 @@ export default function TextBowls() {
             <a href="/rezepte/?search=%2523bowl" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

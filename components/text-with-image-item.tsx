@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import styles from '../../styles/geschichten/geschichte.module.scss';
+import styles from '../styles/text-with-image-item.module.scss';
 import { Scrollbar } from 'react-scrollbars-custom';
 import ExportedImage from 'next-image-export-optimizer';
 
-export default function Geschichte({ children, id, imgs }) {
+export default function TextWithImageItem({ children, id, imgs }) {
     const [shownImg, setShownImg] = useState(0);
 
     return (
-        <div className={styles.geschichte}>
+        <div className={styles.item}>
             {imgs.length <= 1 ? (
                 <ExportedImage alt={id} src={`/imgs/${id}/${imgs[0]}`} fill />
             ) : (

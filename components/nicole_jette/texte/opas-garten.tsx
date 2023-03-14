@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextOpasGarten() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="nicole_jette/opas-garten"
             imgs={['mangold.jpg', 'kompost.jpg', 'wirsing.jpg', 'zuccini.jpg']}
         >
@@ -36,6 +36,6 @@ export default function TextOpasGarten() {
             <a href="/rezepte/?search=%2523garten" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextEvergreens() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['evergreens.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['evergreens.jpg']}>
             <h3>
                 UPDATES
                 <br /> FÜR EVERGREENS
@@ -29,6 +29,6 @@ export default function TextEvergreens() {
             <a href="/rezepte/?search=%2523update" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

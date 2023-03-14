@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextBasics() {
     return (
-        <Geschichte id="nicole_jette" imgs={['basics.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['basics.jpg']}>
             <h3>UNSERE BASICS</h3>
             zum Löffelglück...
             <br />
@@ -97,6 +97,6 @@ export default function TextBasics() {
             sie den Geschmack besser an. <br />
             Wichtig ebenfalls: Die Sauce erst unmittelbar vor dem Servieren
             unterziehen, sonst fällt der Salat zusammen und wird weich.
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

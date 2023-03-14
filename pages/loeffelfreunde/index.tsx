@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from '../../components/footer';
-import GeschichteHunger from '../../components/geschichten/texte/hunger';
+import TextHunger from '../../components/text-items/hunger';
 import Header from '../../components/loeffelfreunde/header';
 import TextBowls from '../../components/loeffelfreunde/texte/bowls';
 import TextEvergreens from '../../components/loeffelfreunde/texte/evergreens';
@@ -37,7 +37,7 @@ export default function LoeffelfreundePage() {
                 <TextBowls />
                 <TextPodcast />
 
-                <GeschichteHunger />
+                <TextHunger />
             </div>
 
             <ScrollTopBtn />

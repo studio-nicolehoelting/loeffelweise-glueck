@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextNicole() {
     return (
-        <Geschichte id="nicole_jette" imgs={['nicole.jpg']}>
+        <TextWithImageItem id="nicole_jette" imgs={['nicole.jpg']}>
             <h3>JETTE ÜBER NICOLE:</h3>
             <br />
             Was mir spontan zu Mama einfällt?
@@ -74,6 +74,6 @@ export default function TextNicole() {
             als sich mit schönen Dingen zu umgeben - außer für ihre Familie und
             ihre vielen Freunde zu kochen und sie löffelweise zu verwöhnen!
             Welch Glück für uns...
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

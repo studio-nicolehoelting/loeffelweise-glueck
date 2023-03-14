@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteWeihnachten() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="geschichten/weihnachten"
             imgs={['mini.jpg', '1.jpg', '2.jpg']}
         >
@@ -76,6 +76,6 @@ export default function GeschichteWeihnachten() {
             <a href="/rezepte/?search=%2523weihnachten" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

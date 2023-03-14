@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteGruenkohl() {
     return (
-        <Geschichte id="geschichten/gruenkohl" imgs={['gruenkohl.jpg']}>
+        <TextWithImageItem id="geschichten/gruenkohl" imgs={['gruenkohl.jpg']}>
             Auch der Weg ist das Ziel...
             <br />
             <br />
@@ -41,6 +41,6 @@ export default function GeschichteGruenkohl() {
             <a href="/rezepte/?search=%2523kohltour" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

@@ -1,8 +1,11 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteRhabarbara() {
     return (
-        <Geschichte id="geschichten/rhabarbara" imgs={['rhabarberbarbara.jpg']}>
+        <TextWithImageItem
+            id="geschichten/rhabarbara"
+            imgs={['rhabarberbarbara.jpg']}
+        >
             <h3>RHABARBARA</h3>
             <br />
             Wenn im Sommer aus den zarten Stängeln des Rhabarbers riesige
@@ -32,6 +35,6 @@ export default function GeschichteRhabarbara() {
             <a href="/rezepte/?search=%2523rhabarbara" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

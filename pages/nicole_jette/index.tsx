@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from '../../components/footer';
-import GeschichteHunger from '../../components/geschichten/texte/hunger';
+import TextHunger from '../../components/text-items/hunger';
 import NavigationBar from '../../components/navigation-bar';
 import Header from '../../components/nicole_jette/header';
 import TextAntrieb from '../../components/nicole_jette/texte/antrieb';
@@ -36,7 +36,7 @@ export default function NicoleJettePage() {
                 <TextOpasGarten />
                 <TextAntrieb />
                 <TextHomemade />
-                <GeschichteHunger />
+                <TextHunger />
             </div>
 
             <ScrollTopBtn />

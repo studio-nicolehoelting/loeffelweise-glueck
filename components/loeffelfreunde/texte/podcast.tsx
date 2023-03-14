@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextPodcast() {
     return (
-        <Geschichte id="loeffelfreunde" imgs={['podcast.jpg']}>
+        <TextWithImageItem id="loeffelfreunde" imgs={['podcast.jpg']}>
             <h3>Ein Podcast zum One Pot!</h3>
             <br />
             <br />
@@ -44,6 +44,6 @@ export default function TextPodcast() {
             <a href="/rezepte/?search=%2523one-pot" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

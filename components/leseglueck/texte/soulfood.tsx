@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextSoulfood() {
     return (
-        <Geschichte id="leseglueck" imgs={['soulfood.jpg']}>
+        <TextWithImageItem id="leseglueck" imgs={['soulfood.jpg']}>
             <h3>GAUMENKITZEL. GESCHMACKSEXPLOSION. GENUSSMOMENTE.</h3>
             <br />
             <br />
@@ -146,6 +146,6 @@ export default function TextSoulfood() {
             sorgfältig arrangierten Fotos kleine Kunstwerke. Wie immer hat
             Katharina Küllmer eine ganz eigene Welt geschaffen und nimmt uns mit
             auf ihre kulinarische Entdeckungsreise. <br />
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

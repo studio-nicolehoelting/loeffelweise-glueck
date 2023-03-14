@@ -1,8 +1,8 @@
-import Geschichte from '../../geschichten/geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function TextWeihnachtenAmsterdam() {
     return (
-        <Geschichte id="leseglueck" imgs={['weihnachten_amsterdam.jpg']}>
+        <TextWithImageItem id="leseglueck" imgs={['weihnachten_amsterdam.jpg']}>
             <h3>LICHTER. GRACHTEN. TANNENSIRUP.</h3>
             <br />
             <br />
@@ -181,6 +181,6 @@ export default function TextWeihnachtenAmsterdam() {
             keinen Hund besitzen, Nicoles Lieblingstipp für den Start in den Tag
             eines großen Dinners: Einen ausgiebigen Spaziergang machen und Efeu
             für die Festtafel sammeln!
-        </Geschichte>
+        </TextWithImageItem>
     );
 }

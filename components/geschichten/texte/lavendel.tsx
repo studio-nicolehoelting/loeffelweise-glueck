@@ -1,8 +1,8 @@
-import Geschichte from '../geschichte';
+import TextWithImageItem from '../../text-with-image-item';
 
 export default function GeschichteLavendel() {
     return (
-        <Geschichte
+        <TextWithImageItem
             id="geschichten/lavendel"
             imgs={['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg']}
         >
@@ -35,6 +35,6 @@ export default function GeschichteLavendel() {
             <a href="/rezepte/?search=%2523lavendelfeld" target="_blank">
                 Zu den Rezepten
             </a>
-        </Geschichte>
+        </TextWithImageItem>
     );
 }
