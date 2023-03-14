@@ -6,4 +6,5 @@ module.exports = {
     },
     assetPrefix: '/',
     trailingSlash: true,
+    productionBrowserSourceMaps: true,
 };
