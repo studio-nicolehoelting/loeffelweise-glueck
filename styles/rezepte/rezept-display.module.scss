@@ -38,8 +38,10 @@ $local_mobile_max_width: calc($mobile_max_width * 1.2);
             max-width: 100%;
             margin: 0 auto;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             /* margin-left: 40px; */
+            position: inherit !important;
+            color: inherit !important;
         }
 
         > *:not(img) {

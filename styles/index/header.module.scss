@@ -7,7 +7,10 @@
     margin: 1.5cm auto;
 
     .hobelbankHeader {
-        width: 100%;
+        width: 100% !important;
+        height: auto !important;
+        color: inherit !important;
+        position: inherit !important;
     }
 
     > span {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../../styles/geschichten/geschichte.module.scss';
 import { Scrollbar } from 'react-scrollbars-custom';
+import ExportedImage from 'next-image-export-optimizer';
 
 export default function Geschichte({ children, id, imgs }) {
     const [shownImg, setShownImg] = useState(0);
@@ -8,12 +9,17 @@ export default function Geschichte({ children, id, imgs }) {
     return (
         <div className={styles.geschichte}>
             {imgs.length <= 1 ? (
-                <img alt={id} src={`/imgs/${id}/${imgs[0]}`} />
+                <ExportedImage alt={id} src={`/imgs/${id}/${imgs[0]}`} fill />
             ) : (
                 <div className={styles.img}>
                     {imgs
                         .map((img, i) => (
-                            <img key={i} alt={img} src={`/imgs/${id}/${img}`} />
+                            <ExportedImage
+                                key={i}
+                                alt={img}
+                                src={`/imgs/${id}/${img}`}
+                                fill
+                            />
                         ))
                         .find((img, i) => i === shownImg)}
                     <span

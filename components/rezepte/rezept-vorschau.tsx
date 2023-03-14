@@ -1,6 +1,7 @@
 import React from 'react';
 import { Rezept } from '../../util/get-rezepte';
 import styles from '../../styles/rezepte/rezept-vorschau.module.scss';
+import ExportedImage from 'next-image-export-optimizer';
 
 export default function RezeptVorschau({
     link,
@@ -20,7 +21,11 @@ export default function RezeptVorschau({
                 (witzig ? ' ' + styles.witzig : '')
             }
         >
-            <img src={`/rezepte/imgs/${link}.jpg`} alt={name} />
+            <ExportedImage
+                src={`/imgs/rezepte/rezept/${link}.jpg`}
+                alt={name}
+                fill
+            />
             <div className={styles.text}>
                 <h3>{name}</h3>
                 <div>

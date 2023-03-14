@@ -1,3 +1,4 @@
+import ExportedImage from 'next-image-export-optimizer';
 import styles from '../../styles/rezepte/rezept-display.module.scss';
 
 export default function RezeptPrint({
@@ -12,7 +13,11 @@ export default function RezeptPrint({
         <div className={styles.dina4}>
             <h3>{name}</h3>
             <div className={styles.container}>
-                <img src={`/rezepte/imgs/${link}.jpg`} alt={name} />
+                <ExportedImage
+                    src={`/imgs/rezepte/rezept/${link}.jpg`}
+                    alt={name}
+                    unoptimized
+                />
                 <div className={styles.zutaten}>
                     <h4>{zutaten[0]}</h4>
                     <ul>

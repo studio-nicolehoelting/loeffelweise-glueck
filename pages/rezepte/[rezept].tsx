@@ -68,7 +68,7 @@ export default function Rezept({
         title: `${name} - Löffelweise Glück`,
         description: `Viel Spaß beim Nachmachen!`,
         url: `https://loeffelweise-glueck.de/rezepte/${link}/`,
-        img: `https://loeffelweise-glueck.de/rezepte/imgs/${link}.jpg`,
+        img: `https://loeffelweise-glueck.de/imgs/rezepte/rezept/${link}.jpg`,
     };
 
     return (

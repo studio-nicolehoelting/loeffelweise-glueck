@@ -107,7 +107,7 @@
         width: 100%;
         height: 100%;
         grid-area: image;
-        position: relative;
+        position: relative !important;
         z-index: 1;
         // margin: auto 0;
         object-fit: cover;

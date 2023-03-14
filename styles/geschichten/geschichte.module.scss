@@ -36,9 +36,11 @@
 
     img,
     div.img {
-        width: 100%;
+        width: 100% !important;
+        height: auto !important;
         grid-area: image;
-        position: relative;
+        position: relative !important;
+        color: inherit !important;
     }
     div.img {
         > img.hidden {
