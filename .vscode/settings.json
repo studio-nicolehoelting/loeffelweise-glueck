@@ -5,5 +5,8 @@
     "liveServer.settings.file": "404.html",
     "[astro]": {
         "editor.defaultFormatter": "astro-build.astro-vscode"
+    },
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/Moritz/Documents/Code/web/loeffelweise-glueck-astro/.github/workflows/deploy.yml"
     }
 }
