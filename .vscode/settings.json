@@ -1,0 +1,9 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "liveServer.settings.root": "/dist/",
+    "liveServer.settings.file": "404.html",
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
+    }
+}

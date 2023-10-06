@@ -1,0 +1,30 @@
+@import './variables.module.scss';
+@import './fonts.module.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    color: $link_color;
+}
+
+body {
+    background-color: $background;
+}
+
+div.scrollTop {
+    position: fixed;
+    right: 2vmin;
+    bottom: 2vmin;
+    font-size: 2.5vw;
+    color: $active;
+    cursor: pointer;
+}
+
+.trashHand {
+    font-family: "TrashHand";
+}

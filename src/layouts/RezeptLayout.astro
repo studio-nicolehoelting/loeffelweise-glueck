@@ -1,0 +1,377 @@
+---
+import Base from "./Base.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+
+interface Props {
+    name: string;
+    image: ImageMetadata;
+    kommentar: string | undefined;
+    zutaten: string[];
+    tags: string[];
+}
+
+const { name, image, zutaten, kommentar, tags } = Astro.props;
+---
+
+<Base title={name + " - Löffelweise Glück"}>
+    <slot name="head" slot="head" />
+    <div id="page">
+        <header>
+            <a class="backBtn" title="Zurück zu den Rezepten" href="..">
+                <Icon name="fa:chevron-left" />
+            </a>
+            <h1 class="heading">{name}</h1>
+        </header>
+        <main class="container">
+            <Image src={image} alt={"Bild von " + name} />
+            <section class="zutaten">
+                <h4>{zutaten[0]}</h4>
+                <!-- <div class="scaleContainer">
+                <label for="scale">Mengenangaben skalieren:</label>
+                <input
+                    type="number"
+                    name="scale"
+                    id="scale"
+                    value={localScale}
+                    min={0.5}
+                    step={0.25}
+                    onInput={ev =>
+                        setGlobalScale(
+                            (ev.target as HTMLInputElement).value
+                        )
+                    }
+                />
+            </div> -->
+                <ul>
+                    {
+                        zutaten.slice(1).map((z, i) => {
+                            if (/^!/.test(z))
+                                return (
+                                    <span class="sectionHeader">
+                                        {z.replace(/^!/, "")}
+                                    </span>
+                                );
+                            else if (/^\s*$/.test(z)) return <span />;
+                            else return <li class="zutat">{z}</li>;
+                        })
+                    }
+                </ul>
+            </section>
+            <section class="zubereitung"><slot /></section>
+            <section class="kommentar">{kommentar}</section>
+            <section class="tags">
+                {
+                    tags.map((t) => (
+                        <a href={`..?search=${encodeURIComponent("#" + t)}`}>
+                            #{t}
+                        </a>
+                    ))
+                }
+            </section>
+        </main>
+        <button
+            type="button"
+            id="printBtn"
+            title="Das Rezept für später ausdrucken..."
+            ><Icon name="fa:print" /></button
+        >
+        <Footer />
+    </div>
+    <div id="print" aria-hidden>
+        <h1 class="name">{name}</h1>
+        <div class="container">
+            <Image src={image} alt={"Bild von " + name} />
+            <div class="zutaten">
+                <h4>{zutaten[0]}</h4>
+                <ul>
+                    {
+                        zutaten.slice(1).map((z, i) => {
+                            if (/^!/.test(z))
+                                return (
+                                    <span class="sectionHeader">
+                                        {z.replace(/^!/, "")}
+                                    </span>
+                                );
+                            else if (/^\s*$/.test(z)) return <span />;
+                            else return <li class="zutat">{z}</li>;
+                        })
+                    }
+                </ul>
+            </div>
+            <div class="zubereitung"><slot /></div>
+            <div class="kommentar">{kommentar}</div>
+        </div>
+    </div>
+</Base>
+
+<style lang="scss">
+    #page {
+        margin-bottom: 3cm;
+
+        header {
+            display: flex;
+            margin-left: 5vw;
+            margin-right: 5vw;
+            margin-top: 1vmin;
+            padding: 1vmin;
+            background-color: $pappe;
+
+            .backBtn {
+                margin-left: 1rem;
+                height: 3rem;
+                padding: 0 10px;
+
+                svg {
+                    color: black;
+                    height: 100%;
+                }
+            }
+
+            .heading {
+                flex-basis: 1;
+                text-align: center;
+                font-family: "TrashHand";
+                font-size: 3rem;
+                width: 100%;
+            }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            grid-template-areas:
+                "img zubereitung"
+                "zutaten kommentar"
+                "tags tags";
+            margin-left: 5vw;
+            margin-right: 5vw;
+            /* min-height: 80vh; */
+            /* max-height: 100vh; */
+            grid-gap: 1vmin;
+            margin-top: 2.5vmin;
+
+            @media (max-width: $mobile_max_width) {
+                grid-template-columns: auto;
+                /* grid-template-columns: auto 3fr; */
+                grid-template-rows: repeat(5, auto);
+                grid-template-areas:
+                    "img"
+                    "zutaten"
+                    "zubereitung"
+                    "kommentar"
+                    "tags";
+            }
+
+            img {
+                grid-area: img;
+                display: block;
+                /* max-height: 50vh; */
+                max-width: 100%;
+                margin: 0 auto;
+                height: 100%;
+                object-fit: cover;
+                /* margin-left: 40px; */
+                position: inherit !important;
+                color: inherit !important;
+            }
+
+            > *:not(img) {
+                background-color: $pappe;
+                padding: 15px;
+            }
+
+            .zubereitung {
+                grid-area: zubereitung;
+                /* max-height: 50vh; */
+            }
+
+            .zutaten {
+                grid-area: zutaten;
+
+                .scaleContainer {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    // white-space: nowrap;
+
+                    > label {
+                        padding-right: 1vw;
+                    }
+                    > input {
+                        min-width: 5pt;
+                        max-width: 5vmax;
+                        flex-grow: 1;
+                        height: fit-content;
+                        background-color: $background;
+                        color: $active;
+                        text-align: center;
+                        border: none;
+                        padding: 5px;
+                    }
+                }
+
+                ul > span {
+                    // margin-left: -40px;
+
+                    &.sectionHeader {
+                        font-weight: bold;
+                    }
+                }
+
+                .zutat {
+                    margin-left: 0.7cm;
+
+                    > span.amount.changed {
+                        color: red;
+                    }
+                }
+            }
+
+            .kommentar {
+                grid-area: kommentar;
+            }
+
+            .tags {
+                grid-area: tags;
+
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+
+                @media (max-width: $mobile_max_width) {
+                    justify-content: space-around;
+                }
+
+                a {
+                    text-decoration: none;
+                    padding: 5px;
+                    margin-bottom: 5px;
+                    margin-right: 5px;
+                    background-color: $pappe_darken;
+                }
+            }
+        }
+
+        #printBtn {
+            --edge-distance: 2vmin;
+            position: fixed;
+            bottom: var(--edge-distance);
+            width: 2cm;
+            height: 2cm;
+            background-color: $pappe_darken;
+            border: none;
+            border-radius: 1cm;
+            // font-size: 1cm;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+            line-height: 1cm;
+            color: black;
+
+            &:hover {
+                background-color: $link_color;
+            }
+
+            svg {
+                height: 1.3cm;
+                margin: 0.3cm auto;
+            }
+        }
+        #printBtn {
+            left: var(--edge-distance);
+        }
+        // .backBtn {
+        //     left: var(--edge-distance);
+        // }
+    }
+
+    #print {
+        display: none;
+        background-color: white;
+        min-height: 297mm;
+        width: 210mm;
+        padding: 2cm;
+
+        h1 {
+            text-align: center;
+            font-size: 50pt;
+            font-family: "TrashHand";
+            margin-top: -1.5cm;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "img zutaten"
+                "zubereitung zubereitung"
+                "kommentar kommentar";
+            grid-row-gap: 1cm;
+            margin-top: 1cm;
+
+            img {
+                width: 100%;
+                height: auto;
+                grid-area: img;
+            }
+
+            .zutaten {
+                grid-area: zutaten;
+                margin-left: 0.5cm;
+
+                ul {
+                    list-style: none;
+                }
+            }
+            .zubereitung {
+                grid-area: zubereitung;
+            }
+            .kommentar {
+                grid-area: kommentar;
+            }
+        }
+    }
+    body.print {
+        background-color: initial;
+
+        #page {
+            display: none;
+        }
+        #print {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    window.addEventListener("beforeprint", () =>
+        document.body.classList.add("print")
+    );
+    window.addEventListener("afterprint", () =>
+        document.body.classList.remove("print")
+    );
+
+    const printBtn = document.querySelector("#printBtn");
+    printBtn?.addEventListener("click", () => window.print());
+    printBtn?.addEventListener("contextmenu", (ev) => {
+        ev.preventDefault();
+        document.body.classList.toggle("print");
+    });
+
+    const url = new URL(window.location.href);
+
+    const searchParam = url.searchParams.get("search");
+    if (searchParam) {
+        const linkBack = document.querySelector(
+            "a.backBtn"
+        ) as HTMLAnchorElement;
+        if (linkBack) {
+            linkBack.href = `../?search=${encodeURIComponent(
+                decodeURIComponent(searchParam)
+            )}`;
+        }
+    }
+</script>

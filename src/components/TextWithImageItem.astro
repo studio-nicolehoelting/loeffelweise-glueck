@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon";
+import { Scrollbar } from "react-scrollbars-custom";
+
+interface Props {
+    imgs: ImageMetadata[];
+    alt_prefix: string;
+}
+
+const { imgs, alt_prefix } = Astro.props;
+---
+
+<article class="item">
+    <div class="img">
+        {
+            imgs.map((img, i) => (
+                <Image
+                    src={img}
+                    alt={alt_prefix + " #" + i}
+                    class:list={{ hidden: i != 0 }}
+                />
+            ))
+        }
+        {
+            imgs.length > 1 && (
+                <>
+                    <Icon name="fa:spoon" class="next" />
+                    <Icon name="fa:spoon" class="back" />
+                </>
+            )
+        }
+    </div>
+    <div class="text">
+        <Scrollbar client:visible noScrollX>
+            <div class="content">
+                <slot />
+            </div>
+        </Scrollbar>
+    </div>
+</article>
+
+<script>
+    const backBtns = document.querySelectorAll("article.item div.img .back");
+    const nextBtns = document.querySelectorAll("article.item div.img .next");
+
+    const changeActiveImg = (btn: Element, offset: number) => {
+        const imgs = Array.from(
+            btn.parentElement?.querySelectorAll("img") ?? []
+        );
+        const active = imgs.findIndex(
+            (img) => !img.classList.contains("hidden")
+        );
+        const next = (active + offset + imgs.length) % imgs.length;
+        imgs[active].classList.add("hidden");
+        imgs[next].classList.remove("hidden");
+    };
+
+    backBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            changeActiveImg(btn, -1);
+        });
+    });
+    nextBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            changeActiveImg(btn, 1);
+        });
+    });
+</script>
+
+<style lang="scss">
+    .hidden {
+        display: none;
+    }
+    .item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 1cm;
+        grid-template-areas: "image text";
+        position: relative;
+        height: min-content;
+        aspect-ratio: 2/1;
+
+        @media (max-width: $mobile_max_width) {
+            grid-template-columns: auto;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: "image" "text";
+        }
+
+        &:nth-child(even) {
+            grid-template-areas: "text image";
+
+            @media (max-width: $mobile_max_width) {
+                grid-template-areas: "image" "text";
+            }
+        }
+        > .text {
+            background-color: $pappe;
+            grid-area: text;
+            text-align: center;
+            position: relative;
+            padding: 1cm 0;
+            aspect-ratio: 1/1;
+
+            .content {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                padding: 0 1cm;
+                max-height: 80%;
+                max-width: 100%;
+                word-wrap: break-word;
+            }
+
+            :global(h1, h2, h3) {
+                font-family: "TrashHand";
+            }
+
+            :global(h1) {
+                font-size: 3em;
+            }
+            :global(h2) {
+                font-size: 2.5em;
+            }
+        }
+
+        img,
+        div.img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            grid-area: image;
+            position: relative;
+        }
+        div.img {
+            > img.hidden {
+                display: none;
+            }
+            > .back,
+            > .next {
+                color: $active;
+                height: 40px;
+                position: absolute;
+                top: 50%;
+                z-index: 1;
+                cursor: pointer;
+                box-sizing: content-box;
+                aspect-ratio: 1/1;
+            }
+            > .back {
+                left: 20px;
+                transform: translateY(-50%) rotate(-90deg);
+            }
+            > .next {
+                right: 20px;
+                transform: translateY(-50%) rotate(90deg);
+            }
+        }
+    }
+</style>

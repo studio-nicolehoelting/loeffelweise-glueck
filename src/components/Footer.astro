@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+    buttonToTop?: boolean;
+}
+
+const { buttonToTop = false } = Astro.props;
+---
+
+{
+    buttonToTop && (
+        <div
+            title="Zum Anfang springen"
+            onclick="
+            window.scrollTo(0, 0);
+            "
+            class="scrollTopBtn"
+        >
+            <Icon name="fa:spoon" />
+        </div>
+    )
+}
+<footer id="footer">
+    <a
+        id="facebook"
+        href="https://www.facebook.com/L%C3%B6ffelweise-Gl%C3%BCck-101153131954283"
+        target="_blank"
+        title="Hier geht's zu unserer Facebook Seite"
+    >
+        <Icon name="fa:facebook-square" />
+    </a>
+    <a
+        id="instagram"
+        href="https://www.instagram.com/loeffelweise.glueck/"
+        target="_blank"
+        title="Hier geht's zu unserer Instagram Seite"
+    >
+        <Icon name="fa:instagram" />
+    </a>
+    <a id="datenschutz-impressum" href="/datenschutz-impressum" target="_blank">
+        datenschutz. impressum.
+    </a>
+</footer>
+
+<style lang="scss">
+    #footer {
+        display: flex;
+        justify-content: flex-end;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        pointer-events: none;
+
+        #datenschutz-impressum,
+        :is(#instagram, #facebook) {
+            color: $pappe;
+            margin-bottom: 0.5vh;
+            text-decoration: none;
+            background-color: $background;
+            padding: 5px;
+            border-radius: 5px;
+            pointer-events: all;
+
+            :hover {
+                color: $pappe_darken;
+            }
+        }
+
+        > #instagram,
+        > #facebook {
+            margin-right: 0.5vw;
+
+            svg {
+                padding-top: 0.2rem;
+                height: 1rem;
+            }
+        }
+    }
+
+    .scrollTopBtn {
+        position: fixed;
+        right: 2vmin;
+        bottom: 6vmin;
+        color: $active;
+        cursor: pointer;
+        z-index: 100;
+
+        svg {
+            height: 5vmax;
+        }
+
+        @media (max-width: $mobile_max_width) {
+            font-size: 5vmax;
+            right: 4vmin;
+            bottom: 4vmin;
+        }
+    }
+</style>

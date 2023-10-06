@@ -1,0 +1,57 @@
+---
+import Base from "@layouts/Base.astro";
+import BurgerSvg from "@components/404/BurgerSvg.astro";
+---
+
+<Base title="404: Seite nicht gefunden" pwaMinimal={false}>
+    <div class="main"><BurgerSvg /></div>
+    <div class="text">
+        Diese Seite scheint es nicht zu geben, hast du dich vertippt?
+        <br />
+        <br />
+         Zurück zu <a href="/">Home</a> oder schau dich bei{" "}
+        <a href="/rezepte">den Rezepten</a> um.
+    </div>
+</Base>
+
+<style lang="scss">
+    .main {
+        // min-height: 600px;
+        margin: 0px auto;
+        width: auto;
+        height: auto;
+        // max-width: 460px;
+        padding-top: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .path {
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: dash 4s alternate infinite;
+    }
+
+    @keyframes dash {
+        0%,
+        30% {
+            fill: 4B4B62;
+            stroke-dashoffset: 0;
+        }
+        80%,
+        100% {
+            fill: transparent;
+            stroke-dashoffset: -200;
+        }
+    }
+
+    .text {
+        width: 480px;
+        margin: 0 auto;
+        padding-top: 5vh;
+        text-align: center;
+        color: $pappe;
+        font-size: larger;
+    }
+</style>

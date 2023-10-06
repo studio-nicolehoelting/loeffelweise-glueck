@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import nicoleJetteImg from "@images/nicole_jette/n&j.jpg";
+---
+
+<div class="header">
+    <Image
+        src={nicoleJetteImg}
+        alt="Nicole & Jette"
+        class="headerImg"
+        quality="high"
+        loading="eager"
+    />
+    <span class="subtitle">Wir stecken hinter Löffelweise Glück</span>
+</div>
+
+<style lang="scss">
+    .header {
+        width: 90%;
+        background-size: cover;
+        margin: 0.75cm auto;
+        position: relative;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+
+        > span.subtitle {
+            top: 80%;
+            left: 0;
+            position: absolute;
+            font-size: 6vmin;
+            width: 100%;
+            text-align: center;
+            color: $pappe;
+            font-family: "TrashHand";
+        }
+    }
+</style>

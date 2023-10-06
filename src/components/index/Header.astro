@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import hobelbankBild from "@images/wilkommen/HobelbankHeader.jpg";
+---
+
+<div id="hobelbankHeaderContainer" class="header">
+    <Image
+        src={hobelbankBild}
+        alt="Hobelbank Header"
+        class="hobelbankHeader"
+        quality="high"
+        loading="eager"
+    />
+    <span>rezepte. fotos. geschichten.</span>
+</div>
+
+<style lang="scss">
+    .header {
+        position: relative;
+        width: 90%;
+        display: block;
+        margin: 1.5cm auto;
+
+        .hobelbankHeader {
+            width: 100%;
+            height: auto;
+
+            @media (max-width: $mobile_max_width) {
+                aspect-ratio: 5/2;
+                object-fit: cover;
+            }
+            @media (max-width: calc($mobile_max_width * 0.75)) {
+                aspect-ratio: 1/1;
+                object-fit: cover;
+            }
+        }
+
+        > span {
+            position: absolute;
+            bottom: 2%;
+            left: 25%;
+            font-size: 8vmin;
+            color: $background;
+            font-family: "TrashHand";
+        }
+    }
+</style>

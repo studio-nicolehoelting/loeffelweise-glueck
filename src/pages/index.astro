@@ -1,0 +1,28 @@
+---
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import Header from "@components/index/Header.astro";
+---
+
+<DefaultLayout title="Löffelweise Glück" activePage="/">
+    <img
+        slot="before-navbar"
+        src="/images/logo-pappe.svg"
+        alt="logo"
+        id="logo"
+    />
+    <Header />
+</DefaultLayout>
+
+<style lang="scss">
+    #logo {
+        width: 10vmax;
+        max-width: 90%;
+        display: block;
+        margin: 0 auto;
+        margin-top: 2vw;
+
+        @media (max-width: $mobile_max_width) {
+            width: 25vmax;
+        }
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import TextWithImageItem from "@components/TextWithImageItem.astro";
+import hungerImg from "@images/hunger.jpg";
+---
+
+<TextWithImageItem imgs={[hungerImg]} alt_prefix="Löffel mit Marmeladenresten">
+    <div class="hunger">
+        <h1>HUNGER ?!</h1>
+        <a href="/rezepte/">Hier geht's zu den Rezepten...</a>
+    </div>
+</TextWithImageItem>
+
+<style>
+    .hunger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        margin-top: -2rem;
+    }
+</style>

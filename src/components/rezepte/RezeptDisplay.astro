@@ -1,0 +1,185 @@
+---
+import { Image } from "astro:assets";
+import { getEntryBySlug } from "astro:content";
+
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props;
+const rezept = await getEntryBySlug("rezepte", id);
+if (!rezept) {
+    throw new Error(`Rezept ${id} nicht gefunden`);
+}
+---
+
+<div
+    class="rezeptDisplay"
+    data-rezept-data={JSON.stringify({
+        name: rezept.data.name,
+        tags: rezept.data.tags,
+        slug: rezept.slug,
+    })}
+>
+    <Image src={rezept.data.bild} alt={rezept.data.name} quality="mid" />
+    <div class="text">
+        <h1>{rezept.data.name}</h1>
+        <div>
+            <a
+                href={encodeURI("/rezepte/" + rezept.slug + "/")}
+                class="zum-rezept"
+            >
+                Rezept zum <span>Löffelglück...</span>
+            </a>
+            <div class="tags">
+                {
+                    rezept.data.tags.map((t: string) => (
+                        <button class="tag-btn" data-tag={t}>
+                            #{t}
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    .rezeptDisplay {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 1cm;
+        grid-template-areas: "image text";
+        position: relative;
+
+        @media (max-width: $mobile_max_width) {
+            grid-template-columns: auto;
+            grid-template-rows: 1fr auto;
+            grid-template-areas:
+                "image"
+                "text";
+        }
+
+        &.hidden {
+            display: none;
+        }
+
+        &.even,
+        &:nth-child(even) {
+            grid-template-areas: "text image";
+
+            @media (max-width: $mobile_max_width) {
+                grid-template-areas:
+                    "image"
+                    "text";
+            }
+        }
+
+        > .text {
+            background-color: $pappe;
+            padding: 10px;
+            grid-area: text;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h1 {
+                font-size: 7vmin;
+                text-align: center;
+                margin-top: 20%;
+                font-weight: 300;
+                font-family: "TrashHand";
+
+                @media (max-width: $mobile_max_width) {
+                    margin-top: 5vmin;
+                }
+            }
+            .zum-rezept {
+                padding: 1vmin;
+                /* background-color: var(--pappe_darken); */
+                border: 1px solid #333;
+                text-decoration: none;
+                font-weight: 200;
+                font-style: italic;
+                display: block;
+                text-align: center;
+                width: 60%;
+                margin: 0 auto;
+                // margin-top: 30%;
+                font-size: 4vmin;
+                margin-bottom: 7vmin;
+                // transition: background-color 0.5s;
+                z-index: 100;
+
+                @media (max-width: $mobile_max_width) {
+                    margin-bottom: 2.5vmin;
+                    font-size: 3vmin;
+                }
+
+                > span {
+                    font-family: "TrashHand";
+                    font-style: normal;
+                    font-size: 6vmin;
+
+                    @media (max-width: $mobile_max_width) {
+                        font-size: 4vmin;
+                    }
+                }
+            }
+
+            .tags {
+                // position: absolute;
+                // bottom: 2vh;
+                left: 0;
+                right: 0;
+                /* padding-top: 10%; */
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                > * {
+                    margin: 0 5px;
+                    font-size: 2vmin;
+                    background-color: transparent;
+                    border: none;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            grid-area: image;
+            position: relative !important;
+            z-index: 1;
+            // margin: auto 0;
+            object-fit: cover;
+        }
+
+        &.witzig::after {
+            content: "";
+            display: inline-block;
+            grid-area: image;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            background-image: url("/imgs/rezepte/witzig.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%;
+        }
+        * {
+            color: $background;
+            position: relative;
+        }
+    }
+</style>

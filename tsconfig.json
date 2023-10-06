@@ -1,0 +1,22 @@
+{
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": ["src/components/*"],
+            "@assets/*": ["src/assets/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@styles/*": ["src/styles/*"],
+            "@images/*": ["src/images/*"],
+            "@scripts/*": ["src/scripts/*"]
+        },
+        "plugins": [
+            {
+                "name": "@astrojs/ts-plugin"
+            }
+        ],
+        "types": ["vite-plugin-pwa/client"],
+        "jsx": "react-jsx",
+        "jsxImportSource": "react"
+    }
+}

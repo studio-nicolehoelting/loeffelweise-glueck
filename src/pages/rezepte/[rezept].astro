@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+import RezeptLayout from "@layouts/RezeptLayout.astro";
+import RezeptSchema from "@components/rezepte/RezeptSchema.astro";
+
+export const getStaticPaths = (async () => {
+    const rezepte = await getCollection("rezepte");
+    return rezepte.map((rezept) => ({
+        params: {
+            rezept: rezept.slug,
+        },
+        props: {
+            slug: rezept.slug,
+        },
+    }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+    slug: string;
+}
+
+const { slug } = Astro.props;
+
+const rezept = await getEntryBySlug("rezepte", slug);
+if (!rezept) {
+    throw new Error(`Rezept ${slug} not found`);
+}
+const Content = await rezept.render().then((c) => c.Content);
+
+const zubereitungSplit =
+    rezept.body.split("\n").filter((z) => z.length > 0) ?? [];
+---
+
+<RezeptLayout
+    name={rezept.data.name}
+    image={rezept.data.bild}
+    kommentar={rezept.data.kommentar}
+    tags={rezept.data.tags}
+    zutaten={rezept.data.zutaten}
+>
+    <RezeptSchema
+        name={rezept.data.name}
+        image={rezept.data.bild}
+        tags={rezept.data.tags}
+        zutaten={rezept.data.zutaten}
+        author="Löffelweise Glück"
+        description={rezept.data.kommentar ?? ""}
+        zubereitung={zubereitungSplit}
+        slot="head"
+    />
+    <Content />
+</RezeptLayout>

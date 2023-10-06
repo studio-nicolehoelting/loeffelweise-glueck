@@ -1,0 +1,33 @@
+---
+import { getImage } from "astro:assets";
+import { Schema } from "astro-seo-schema";
+interface Props {
+    author: string;
+    description: string;
+    image: ImageMetadata;
+    zutaten: string[];
+    name: string;
+    zubereitung: string[];
+    tags: string[];
+}
+
+const { author, description, image, zutaten, name, zubereitung, tags } =
+    Astro.props;
+
+const processedImage = await getImage({ src: image, quality: "low" });
+const imageSrc = processedImage.src;
+---
+
+<Schema
+    item={{
+        "@context": "https://schema.org",
+        "@type": "Recipe",
+        author: author,
+        description: description,
+        image: imageSrc,
+        recipeIngredient: zutaten,
+        name: name,
+        recipeInstructions: zubereitung,
+        keywords: tags,
+    }}
+/>

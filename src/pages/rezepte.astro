@@ -1,0 +1,14 @@
+---
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import Header from "@components/rezepte/Header.astro";
+import RezepteContainer from "@components/rezepte/RezepteContainer.astro";
+---
+
+<DefaultLayout
+    title="Rezepte - Löffelweise Glück"
+    activePage="/rezepte"
+    buttonToTop
+>
+    <Header />
+    <RezepteContainer />
+</DefaultLayout>

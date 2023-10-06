@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon";
+
+interface Props {
+    img: { src: ImageMetadata; alt: string };
+    subtitle: string;
+    subtitleStyle?: string;
+}
+
+let { img, subtitle, subtitleStyle = "" } = Astro.props;
+---
+
+<section class="header">
+    <div class="top">
+        <Image src={img.src} alt={img.alt} quality="high" loading="eager" />
+        <h2 class="subtitle" style={subtitleStyle}>{subtitle}</h2>
+        <span id="mehrLesen">
+            mehr lesen <br />
+            <Icon name="fa:spoon" />
+        </span>
+    </div>
+    <div id="textExpand" class="closed text-expand">
+        <slot />
+    </div>
+</section>
+
+<script>
+    const mehrLesen = document.getElementById("mehrLesen");
+    const textExpand = document.getElementById("textExpand");
+    let hidden = true;
+    mehrLesen?.addEventListener("click", () => {
+        if (hidden) {
+            textExpand?.classList.remove("closed");
+            hidden = false;
+        } else {
+            textExpand?.classList.add("closed");
+            hidden = true;
+        }
+    });
+</script>
+
+<style lang="scss">
+    .header {
+        width: 90%;
+        // padding-top: 45%;
+        margin: 0.75cm auto;
+        position: relative;
+        background-size: cover;
+
+        > .top {
+            position: relative;
+            width: 100%;
+
+            > img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                inset: 0px;
+                color: transparent;
+            }
+            > .subtitle {
+                position: absolute;
+                font-size: 3vw;
+                width: 100%;
+                text-align: center;
+                color: $pappe;
+                font-family: "TrashHand";
+            }
+            > .subtitle {
+                top: 80%;
+                font-weight: normal;
+            }
+            > #mehrLesen {
+                color: $active;
+                position: absolute;
+                bottom: 5px;
+                text-align: center;
+                left: 50%;
+                transform: translate(-50%);
+                font-size: 2vmin;
+                cursor: pointer;
+
+                svg {
+                    height: 2vmin;
+                }
+            }
+        }
+    }
+
+    #textExpand {
+        background-color: $pappe;
+        // width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 1cm;
+
+        &.closed {
+            display: none;
+        }
+    }
+</style>

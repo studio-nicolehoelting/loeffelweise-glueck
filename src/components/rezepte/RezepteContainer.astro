@@ -1,0 +1,171 @@
+---
+import { Icon } from "astro-icon";
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+import RezeptDisplay from "./RezeptDisplay.astro";
+
+const rezepte = (await getCollection("rezepte")).sort((a, b) => {
+    if (a.data.praesentiert) {
+        if (!b.data.praesentiert) return -1;
+        else {
+            if (a.data.praesentiert == b.data.praesentiert)
+                return a.data.datum < b.data.datum ? 1 : -1;
+            else return a.data.praesentiert - b.data.praesentiert;
+        }
+    } else if (b.data.praesentiert) return 1;
+    else return a.data.datum < b.data.datum ? 1 : -1;
+});
+
+const page_rezepte = await Promise.all(
+    rezepte.map(async (rezept) => ({
+        name: rezept.data.name,
+        slug: rezept.slug,
+        img: (await getImage({ src: rezept.data.bild, quality: "mid" })).src,
+        tags: rezept.data.tags,
+        date: rezept.data.datum,
+        praesentiert: rezept.data.praesentiert,
+    }))
+);
+---
+
+<div id="searchContainer" class="searchContainer">
+    <label for="search">Suchbegriff eingeben</label>
+    <button
+        type="button"
+        id="sortOrder"
+        title="Sortierreihenfolge ändern"
+        class="sortOrder"
+    >
+        aktuell
+    </button>
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="#Sommer"
+        autofocus
+    />
+    <button
+        type="button"
+        id="delete-search"
+        class="delete-search"
+        title="Suche löschen"
+    >
+        <Icon pack="octicon" name="x-circle-16" />
+    </button>
+</div>
+
+<div id="rezepte" class="rezepte" data-rezepte={JSON.stringify(page_rezepte)}>
+    {rezepte.map((rezept) => <RezeptDisplay id={rezept.slug} />)}
+</div>
+
+<script src="/src/scripts/rezepte.ts"></script>
+
+<!-- <script>
+    // const modes = [
+    //     {
+    //         content: "aktuell",
+    //         title: "Chronologisch absteigend",
+    //     },
+    //     {
+    //         content: "historisch",
+    //         title: "Chronologisch aufsteigend",
+    //     },
+    //     {
+    //         content: "A>Z",
+    //         title: "Von A bis Z",
+    //     },
+    //     {
+    //         content: "A<Z",
+    //         title: "Von Z bis A",
+    //     },
+    // ];
+    // const sortBtn = document.getElementById("sortOrder") as HTMLButtonElement;
+</script> -->
+
+<style lang="scss">
+    .searchContainer {
+        background-color: $pappe;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 1cm;
+        padding: 40px;
+        display: grid;
+        margin-top: 2cm;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr repeat(3, auto);
+        grid-template-areas: "label mode search delete";
+        align-items: center;
+
+        @media (max-width: $mobile_max_width) {
+            padding: 10px;
+            margin-top: 1cm;
+            grid-template-columns: 1fr 1fr min-content;
+            grid-template-rows: repeat(2, auto);
+            grid-template-areas:
+                "label mode delete"
+                "label search search";
+        }
+
+        * {
+            font-size: min(2rem, 6vw);
+            height: fit-content;
+        }
+
+        label {
+            max-width: 40%;
+            margin-right: 5px;
+            grid-area: label;
+        }
+
+        .sortOrder {
+            grid-area: mode;
+
+            svg {
+                height: calc(min(2rem, 6vw) * 1.5);
+
+                &.left {
+                    transform: rotate(-135deg);
+                }
+                &.right {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        .search {
+            grid-area: search;
+            width: 100%;
+        }
+        .delete-search {
+            grid-area: delete;
+            width: fit-content;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+
+            svg {
+                height: min(2rem, 6vw);
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .sortOrder {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .loadMore {
+        background-color: $pappe;
+        border: none;
+        padding: 20px;
+        font-size: 2rem;
+        font-family: "TrashHand";
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1cm;
+        width: 90%;
+        cursor: pointer;
+    }
+</style>

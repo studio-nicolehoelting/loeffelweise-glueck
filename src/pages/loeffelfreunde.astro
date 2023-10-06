@@ -1,0 +1,36 @@
+---
+import Header from "@components/loeffelfreunde/Header.astro";
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import { getCollection } from "astro:content";
+import TextWithImageItem from "@components/TextWithImageItem.astro";
+import HungerText from "@components/texte/Hunger.astro";
+
+const texte = (await getCollection("loeffelfreunde")).sort(
+    (a, b) => b.data.order - a.data.order
+);
+---
+
+<DefaultLayout
+    title="Löffelfreu(n)de - Löffelweise Glück"
+    activePage="/loeffelfreunde"
+    buttonToTop
+>
+    <Header />
+    {
+        texte.map(async (g) => {
+            const { Content } = await g.render();
+            return (
+                <TextWithImageItem imgs={g.data.images} alt_prefix={g.slug}>
+                    <Content />
+                </TextWithImageItem>
+            );
+        })
+    }
+    <HungerText />
+</DefaultLayout>
+
+<style>
+    p {
+        background-color: white;
+    }
+</style>
