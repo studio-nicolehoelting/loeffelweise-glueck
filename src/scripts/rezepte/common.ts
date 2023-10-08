@@ -37,15 +37,18 @@ export const sortByPraesentiert = (
     a: { item: Rezept; score?: number },
     b: { item: Rezept; score?: number }
 ) => {
-    if (a.item.praesentiert) {
-        if (!b.item.praesentiert) return -1;
-        else {
-            if (a.item.praesentiert == b.item.praesentiert)
-                return -compareDate(a.item.date, b.item.date);
-            else return a.item.praesentiert - b.item.praesentiert;
-        }
-    } else if (b.item.praesentiert) return 1;
-    else return -compareDate(a.item.date, b.item.date);
+    if (!a.score || !b.score || a.score == b.score) {
+        if (a.item.praesentiert) {
+            if (!b.item.praesentiert) return -1;
+            else {
+                if (a.item.praesentiert == b.item.praesentiert)
+                    return -compareDate(a.item.date, b.item.date);
+                else return a.item.praesentiert - b.item.praesentiert;
+            }
+        } else if (b.item.praesentiert) return 1;
+        else return -compareDate(a.item.date, b.item.date);
+    }
+    return a.score - b.score;
 };
 
 export const compareDate = (a: Date, b: Date) => {
