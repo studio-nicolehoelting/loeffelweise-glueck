@@ -64,7 +64,9 @@ export default {
     },
     workbox: {
         navigateFallback: "/pwa_404/",
-        globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,webp,TTF,woff2}"],
+        globPatterns: [
+            "**/*.{css,js,html,svg,png,ico,txt,webp,TTF,woff2,avif}",
+        ],
     },
     devOptions: {
         enabled: true,

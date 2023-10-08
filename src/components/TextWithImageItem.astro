@@ -18,6 +18,8 @@ const { imgs, alt_prefix } = Astro.props;
                 <Image
                     src={img}
                     alt={alt_prefix + " #" + i}
+                    format="avif"
+                    quality="mid"
                     class:list={{ hidden: i != 0 }}
                 />
             ))
