@@ -1,8 +1,9 @@
 ---
 import { pwaInfo } from "virtual:pwa-info";
+import type { TransitionAnimationValue } from "astro";
+import { Head } from "astro-capo";
 import "/src/styles/styles.scss";
 import pwaSetup from "pwaSetup.ts";
-import type { TransitionAnimationValue } from "astro";
 
 let manifest = pwaSetup.manifest || {};
 
@@ -17,7 +18,7 @@ const { title, pwaMinimal = true, transitionAnimate } = Astro.props;
 
 <!doctype html>
 <html lang="de" transition:animate={transitionAnimate}>
-    <head>
+    <Head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
@@ -63,7 +64,7 @@ const { title, pwaMinimal = true, transitionAnimate } = Astro.props;
         <title>{title}</title>
         {pwaMinimal && <script src="/src/scripts/pwa.ts" type="module" />}
         <slot name="head" />
-    </head>
+    </Head>
     <body>
         <slot />
     </body>

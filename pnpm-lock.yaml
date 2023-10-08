@@ -26,6 +26,9 @@ dependencies:
   astro:
     specifier: ^3.2.2
     version: 3.2.2(sass@1.68.0)
+  astro-capo:
+    specifier: ^0.0.1
+    version: 0.0.1(astro@3.2.2)
   astro-icon:
     specifier: ^0.8.1
     version: 0.8.1
@@ -2189,6 +2192,15 @@ packages:
       get-intrinsic: 1.2.1
       is-array-buffer: 3.0.2
       is-shared-array-buffer: 1.0.2
+    dev: false
+
+  /astro-capo@0.0.1(astro@3.2.2):
+    resolution: {integrity: sha512-KyQD1mzgEQnbqrKpYdoIZMAYejkOcIJocdGuQBH9Yzr4KqGzIR8P2DDNbV/FQXaSyq900lCZwWJH45tBIQCG8w==}
+    peerDependencies:
+      astro: '>= 2.8'
+    dependencies:
+      astro: 3.2.2(sass@1.68.0)
+      ultrahtml: 1.5.2
     dev: false
 
   /astro-icon@0.8.1:
