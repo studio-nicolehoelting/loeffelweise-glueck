@@ -52,16 +52,20 @@ const deleteBtn = document.getElementById("delete-search") as HTMLButtonElement;
 const searchInput = document.getElementById("search") as HTMLInputElement;
 const sortOrderBtn = document.getElementById("sortOrder") as HTMLButtonElement;
 
+let sortMode = Number(sessionStorage.getItem("sortOrder")) || 0;
+
 const url = new URL(window.location.href);
 const urlParams = new URLSearchParams(url.search);
 let searchQuery = decodeURIComponent(urlParams.get("search") ?? "");
 if (searchQuery.length > 0) onSearchQueryChange(true);
 
-let sortMode = Number(sessionStorage.getItem("sortOrder")) || 0;
-
+let searchTimeout: NodeJS.Timeout;
 searchInput.addEventListener("input", (ev: Event) => {
-    searchQuery = (ev.target as HTMLInputElement).value;
-    onSearchQueryChange();
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        searchQuery = (ev.target as HTMLInputElement).value;
+        onSearchQueryChange();
+    }, 300);
 });
 
 deleteBtn.addEventListener("click", () => {
@@ -105,7 +109,6 @@ function refreshRecipes(recipeData: Rezept[]) {
     recipeData.forEach((r) => {
         const recipe = document.createElement("div");
         recipe.classList.add("rezeptDisplay");
-        //   if(eeWitzig) recipe.classList.add('witzig');
         const img = document.createElement("img");
         img.src = r.img;
         recipe.appendChild(img);
