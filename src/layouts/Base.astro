@@ -2,19 +2,21 @@
 import { pwaInfo } from "virtual:pwa-info";
 import "/src/styles/styles.scss";
 import pwaSetup from "pwaSetup.ts";
+import type { TransitionAnimationValue } from "astro";
 
 let manifest = pwaSetup.manifest || {};
 
 interface Props {
     title: string;
     pwaMinimal?: boolean;
+    transitionAnimate?: TransitionAnimationValue;
 }
 
-const { title, pwaMinimal = true } = Astro.props;
+const { title, pwaMinimal = true, transitionAnimate } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de" transition:animate={transitionAnimate}>
     <head>
         <meta charset="UTF-8" />
         <meta
