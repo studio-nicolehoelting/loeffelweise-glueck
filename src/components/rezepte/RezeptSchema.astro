@@ -14,7 +14,10 @@ interface Props {
 const { author, description, image, zutaten, name, zubereitung, tags } =
     Astro.props;
 
-const processedImage = await getImage({ src: image, quality: "low" });
+const processedImage = await getImage({
+    src: image,
+    quality: "mid",
+});
 const imageSrc = processedImage.src;
 ---
 

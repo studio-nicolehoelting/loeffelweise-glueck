@@ -21,12 +21,7 @@ if (!rezept) {
         slug: rezept.slug,
     })}
 >
-    <Image
-        src={rezept.data.bild}
-        alt={rezept.data.name}
-        quality="mid"
-        format="avif"
-    />
+    <Image src={rezept.data.bild} alt={rezept.data.name} quality="mid" />
     <div class="text">
         <h1>{rezept.data.name}</h1>
         <div>

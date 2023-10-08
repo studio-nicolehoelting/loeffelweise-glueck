@@ -11,7 +11,12 @@ const page_rezepte = await Promise.all(
     rezepte.map(async (rezept) => ({
         name: rezept.data.name,
         slug: rezept.slug,
-        img: (await getImage({ src: rezept.data.bild, quality: "mid" })).src,
+        img: (
+            await getImage({
+                src: rezept.data.bild,
+                quality: "mid",
+            })
+        ).src,
         tags: rezept.data.tags,
         date: rezept.data.datum,
         praesentiert: rezept.data.praesentiert,
