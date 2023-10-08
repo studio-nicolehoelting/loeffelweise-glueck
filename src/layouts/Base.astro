@@ -52,6 +52,12 @@ const { title, pwaMinimal = true } = Astro.props;
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
         <meta name="msapplication-TileColor" content={manifest.theme_color} />
         <meta name="msapplication-tap-highlight" content="no" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS Feed für unsere Rezepte"
+            href="/rss.xml"
+        />
         <title>{title}</title>
         {pwaMinimal && <script src="/src/scripts/pwa.ts" type="module" />}
         <slot name="head" />

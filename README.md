@@ -41,7 +41,7 @@ git push
 
 ```yml
 bild: ./link/zu/dem/bild # relativ von dem Rezepte-Ordner aus, ohne Anführungszeichen
-datum: 2023-10-06 # ohne Anführungszeichen
+datum: 2023-10-06 # YYYY-MM-DD, ohne Anführungszeichen
 name: "Mein Rezept" # mit Anführungszeichen
 tags: # Liste mit "- " am Anfang
     - "lecker"
@@ -58,7 +58,7 @@ praesentiert: 1 # optional, wenn gesetzt ist, wird das Rezept vor anderen (ohne 
 
 Darunter dann die Zubereitung schreiben (Kann mit [Markdown](https://www.heise.de/mac-and-i/downloads/65/1/1/6/7/1/0/3/Markdown-CheatSheet-Deutsch.pdf) formattiert werden).
 
-### Geschichte/Nicole&Jette/Löffelfreunde/Leseglück
+### Geschichten/Nicole&Jette/Löffelfreunde/Leseglück
 
 ```yml
 order: 1 # größte Zahl oben (genau anders als bei Rezepten). Einfach bei neuen Einträgen hochzählen

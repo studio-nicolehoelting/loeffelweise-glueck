@@ -25,11 +25,7 @@ const { name, image, zutaten, kommentar, tags } = Astro.props;
             <h1 class="heading">{name}</h1>
         </header>
         <main class="container">
-            <Image
-                src={image}
-                alt={"Bild von " + name}
-                quality="mid"
-            />
+            <Image src={image} alt={"Bild von " + name} quality="mid" />
             <section class="zutaten">
                 <h4>{zutaten[0]}</h4>
                 {
