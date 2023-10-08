@@ -1,31 +1,63 @@
 import Fuse from "fuse.js";
-
-interface Rezept {
-    name: string;
-    slug: string;
-    img: string;
-    tags: string[];
-    date: Date;
-    praesentiert: number | undefined;
-}
+import {
+    sortByDateDesc,
+    type Rezept,
+    sortByDateAsc,
+    sortByNameAsc,
+    sortByNameDesc,
+} from "./common";
 
 const rezepte = JSON.parse(
     document.getElementById("rezepte")?.dataset.rezepte || "[]"
 ) as Rezept[];
 const searchOptions: Fuse.IFuseOptions<Rezept> = {
     includeScore: true,
-    threshold: 0.4,
-    keys: ["title", "url", "tags"],
+    threshold: 0.6,
+    keys: [{ name: "name", weight: 2 }, "slug", "tags"],
 };
 const fuse = new Fuse(rezepte, searchOptions);
 
+enum SortOrder {
+    Praesentiert,
+    Aktuell,
+    Historisch,
+    AtoZ,
+    ZtoA,
+}
+
+const sortModes = [
+    {
+        content: "präsentiert",
+        title: "Unsere Empfehlungen",
+    },
+    {
+        content: "aktuell",
+        title: "Chronologisch absteigend",
+    },
+    {
+        content: "historisch",
+        title: "Chronologisch aufsteigend",
+    },
+    {
+        content: "A &rarr; Z",
+        title: "Von A bis Z",
+    },
+    {
+        content: "A &larr; Z",
+        title: "Von Z bis A",
+    },
+];
+
 const deleteBtn = document.getElementById("delete-search") as HTMLButtonElement;
 const searchInput = document.getElementById("search") as HTMLInputElement;
+const sortOrderBtn = document.getElementById("sortOrder") as HTMLButtonElement;
 
 const url = new URL(window.location.href);
 const urlParams = new URLSearchParams(url.search);
 let searchQuery = decodeURIComponent(urlParams.get("search") ?? "");
 if (searchQuery.length > 0) onSearchQueryChange(true);
+
+let sortMode = Number(sessionStorage.getItem("sortOrder")) || 0;
 
 searchInput.addEventListener("input", (ev: Event) => {
     searchQuery = (ev.target as HTMLInputElement).value;
@@ -37,13 +69,22 @@ deleteBtn.addEventListener("click", () => {
     onSearchQueryChange(true);
 });
 
+sortOrderBtn.addEventListener("click", () => {
+    setSortOrder((sortMode + 1) % sortModes.length);
+});
+sortOrderBtn.addEventListener("contextmenu", (ev) => {
+    ev.preventDefault();
+    setSortOrder((sortMode - 1) % sortModes.length);
+});
+
 function onSearchQueryChange(updateInput = false) {
     if (updateInput) searchInput.value = searchQuery;
     if (searchQuery.trim().length == 0) {
-        refreshRecipes(rezepte);
+        const rezepteSortiert = sortData(rezepte.map((r) => ({ item: r })));
+        refreshRecipes(rezepteSortiert.map((r) => r.item));
         url.searchParams.delete("search");
     } else {
-        let searchResults = fuse.search(searchQuery);
+        let searchResults = sortData(fuse.search(searchQuery));
         if (searchQuery.trimStart().startsWith("#"))
             searchResults = searchResults.filter((res) =>
                 res.score ? res.score < 0.2 : true
@@ -103,65 +144,23 @@ function refreshRecipes(recipeData: Rezept[]) {
     });
 }
 
-// sortBtn.addEventListener("click", () => {
-//     console.log(searchQuery);
-// });
+function setSortOrder(mode: number) {
+    if (mode > sortModes.length - 1) return;
+    sessionStorage.setItem("sortOrder", mode.toString());
+    sortOrderBtn.innerHTML = sortModes[mode].content;
+    sortOrderBtn.title = sortModes[mode].title;
+    sortMode = mode;
+    onSearchQueryChange();
+}
 
-// function filterRezepte(query: string) {
-//     if (query.length == 0) {
-//         rezepteDisplays.forEach((rezept) => rezept.classList.remove("hidden"));
-//         return;
-//     }
-//     const queries = query.split(" ");
-
-//     const filtered = rezepteDisplays.reduce(
-//         (
-//             acc: {
-//                 matched: HTMLDivElement[];
-//                 notMatched: HTMLDivElement[];
-//             },
-//             rezept
-//         ) => {
-//             let ret = true;
-//             let {
-//                 name,
-//                 slug,
-//                 tags,
-//             }: { name: string; slug: string; tags: string[] } = JSON.parse(
-//                 rezept.dataset.rezeptData ?? "{}"
-//             );
-//             queries.forEach((query) => {
-//                 let isTag = false;
-//                 if (/^#/.test(query)) {
-//                     query = query.replace(/^#/, "");
-//                     isTag = true;
-//                 }
-//                 const r = new RegExp(
-//                     query.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"),
-//                     "i"
-//                 );
-//                 if (
-//                     !(
-//                         (r.test(name) && isTag == false) ||
-//                         (isTag == true &&
-//                             tags
-//                                 .map((tag) => r.test(tag))
-//                                 .some((tagFound) => tagFound == true))
-//                     )
-//                 )
-//                     ret = false;
-//             });
-//             acc[ret ? "matched" : "notMatched"].push(rezept);
-//             return acc;
-//         },
-//         { matched: [], notMatched: [] }
-//     );
-
-//     filtered.notMatched.forEach((rezept) => rezept.classList.add("hidden"));
-//     filtered.matched.forEach((rezept) => rezept.classList.remove("hidden"));
-// }
-
-// console.log(fuse.search("schnell"));
+function sortData(data: { item: Rezept; score?: number }[]) {
+    if (sortMode == SortOrder.Praesentiert) return data;
+    if (sortMode == SortOrder.Aktuell) return data.sort(sortByDateDesc);
+    if (sortMode == SortOrder.Historisch) return data.sort(sortByDateAsc);
+    if (sortMode == SortOrder.AtoZ) return data.sort(sortByNameAsc);
+    if (sortMode == SortOrder.ZtoA) return data.sort(sortByNameDesc);
+    throw new Error("Invalid sort mode");
+}
 
 function setupTagBtn(tag: string) {
     return () => {
@@ -176,6 +175,10 @@ window.addEventListener("load", () => {
     const tagBtns = Array.from(
         document.querySelectorAll(".tag-btn")
     ) as HTMLButtonElement[];
+
+    if (sortMode !== SortOrder.Praesentiert) {
+        setSortOrder(sortMode);
+    }
 
     tagBtns.forEach((btn) => {
         if (!btn.dataset.tag) return;

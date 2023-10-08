@@ -28,22 +28,26 @@ const { name, image, zutaten, kommentar, tags } = Astro.props;
             <Image src={image} alt={"Bild von " + name} />
             <section class="zutaten">
                 <h4>{zutaten[0]}</h4>
-                <!-- <div class="scaleContainer">
-                <label for="scale">Mengenangaben skalieren:</label>
-                <input
-                    type="number"
-                    name="scale"
-                    id="scale"
-                    value={localScale}
-                    min={0.5}
-                    step={0.25}
-                    onInput={ev =>
-                        setGlobalScale(
-                            (ev.target as HTMLInputElement).value
-                        )
-                    }
-                />
-            </div> -->
+                {
+                    false &&
+                        // <div class="scaleContainer">
+                        //     <label for="scale">Mengenangaben skalieren:</label>
+                        //     <input
+                        //         type="number"
+                        //         name="scale"
+                        //         id="scale"
+                        //         value={localScale}
+                        //         min={0.5}
+                        //         step={0.25}
+                        //         onInput={(ev) =>
+                        //             setGlobalScale(
+                        //                 (ev.target as HTMLInputElement).value
+                        //             )
+                        //         }
+                        //     />
+                        // </div>
+                        undefined
+                }
                 <ul>
                     {
                         zutaten.slice(1).map((z, i) => {
