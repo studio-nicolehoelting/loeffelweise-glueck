@@ -68,8 +68,8 @@ export default {
             "**/*.{css,js,html,svg,png,ico,txt,webp,TTF,woff2,avif}",
         ],
     },
-    devOptions: {
-        enabled: true,
-        navigateFallbackAllowlist: [/^\/pwa_404$/],
-    },
+    // devOptions: {
+    //     enabled: true,
+    //     navigateFallbackAllowlist: [/^\/pwa_404$/],
+    // },
 } as Partial<VitePWAOptions>;
