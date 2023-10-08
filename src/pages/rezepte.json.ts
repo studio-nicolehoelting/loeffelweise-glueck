@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
                         src: item.data.bild,
                         quality: "mid",
                     }).then((img) => img.src),
-                    datum: item.data.datum,
+                    date: item.data.datum,
                     praesentiert: item.data.praesentiert,
                     tags: item.data.tags,
                 }))

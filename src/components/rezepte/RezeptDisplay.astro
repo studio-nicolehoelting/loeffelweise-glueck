@@ -13,14 +13,7 @@ if (!rezept) {
 }
 ---
 
-<div
-    class="rezeptDisplay"
-    data-rezept-data={JSON.stringify({
-        name: rezept.data.name,
-        tags: rezept.data.tags,
-        slug: rezept.slug,
-    })}
->
+<div class="rezeptDisplay">
     <Image src={rezept.data.bild} alt={rezept.data.name} quality="mid" />
     <div class="text">
         <h1>{rezept.data.name}</h1>

@@ -3,25 +3,17 @@ import { Icon } from "astro-icon";
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 import RezeptDisplay from "./RezeptDisplay.astro";
-import { sortByPraesentiert } from "@scripts/rezepte/common";
+import {
+    sortByPraesentiert,
+    toClientsideRezeptNoImage,
+} from "@scripts/rezepte/common";
 
-const rezepte = (await getCollection("rezepte")).sort(sortByPraesentiert);
-
-const page_rezepte = await Promise.all(
-    rezepte.map(async (rezept) => ({
-        name: rezept.data.name,
-        slug: rezept.slug,
-        img: (
-            await getImage({
-                src: rezept.data.bild,
-                quality: "mid",
-            })
-        ).src,
-        tags: rezept.data.tags,
-        date: rezept.data.datum,
-        praesentiert: rezept.data.praesentiert,
-    }))
-);
+const rezepte = (await getCollection("rezepte")).sort((a, b) => {
+    return sortByPraesentiert(
+        { item: toClientsideRezeptNoImage(a) },
+        { item: toClientsideRezeptNoImage(b) }
+    );
+});
 ---
 
 <div id="searchContainer" class="searchContainer">
@@ -51,7 +43,7 @@ const page_rezepte = await Promise.all(
     </button>
 </div>
 
-<div id="rezepte" class="rezepte" data-rezepte={JSON.stringify(page_rezepte)}>
+<div id="rezepte" class="rezepte">
     {rezepte.map((rezept) => <RezeptDisplay id={rezept.slug} />)}
 </div>
 
@@ -61,11 +53,9 @@ const page_rezepte = await Promise.all(
     .searchContainer {
         background-color: $pappe;
         width: 90%;
-        margin: 0 auto;
-        margin-bottom: 1cm;
+        margin: 1cm auto;
         padding: 40px;
         display: grid;
-        margin-top: 2cm;
         grid-template-rows: auto;
         grid-template-columns: 1fr repeat(3, auto);
         grid-template-areas: "label mode search delete";

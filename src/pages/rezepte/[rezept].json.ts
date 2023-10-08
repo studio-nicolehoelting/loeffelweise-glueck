@@ -33,7 +33,7 @@ export const GET: APIRoute = async ({ params }) => {
             name: rezept.data.name,
             slug: rezept.slug,
             img,
-            datum: rezept.data.datum,
+            date: rezept.data.datum,
             tags: rezept.data.tags,
             zutaten: rezept.data.zutaten,
             zubereitung: rezept.body,

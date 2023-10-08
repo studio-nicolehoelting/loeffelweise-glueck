@@ -22,19 +22,30 @@ export interface Rezept {
     praesentiert: number | undefined;
 }
 
+export const toClientsideRezeptNoImage = (
+    rezept: RezeptFromCollection
+): Rezept => ({
+    name: rezept.data.name,
+    slug: rezept.slug,
+    img: "IMAGE NOT GENERATED",
+    tags: rezept.data.tags,
+    date: rezept.data.datum,
+    praesentiert: rezept.data.praesentiert,
+});
+
 export const sortByPraesentiert = (
-    a: RezeptFromCollection,
-    b: RezeptFromCollection
+    a: { item: Rezept; score?: number },
+    b: { item: Rezept; score?: number }
 ) => {
-    if (a.data.praesentiert) {
-        if (!b.data.praesentiert) return -1;
+    if (a.item.praesentiert) {
+        if (!b.item.praesentiert) return -1;
         else {
-            if (a.data.praesentiert == b.data.praesentiert)
-                return -compareDate(a.data.datum, b.data.datum);
-            else return a.data.praesentiert - b.data.praesentiert;
+            if (a.item.praesentiert == b.item.praesentiert)
+                return -compareDate(a.item.date, b.item.date);
+            else return a.item.praesentiert - b.item.praesentiert;
         }
-    } else if (b.data.praesentiert) return 1;
-    else return -compareDate(a.data.datum, b.data.datum);
+    } else if (b.item.praesentiert) return 1;
+    else return -compareDate(a.item.date, b.item.date);
 };
 
 export const compareDate = (a: Date, b: Date) => {
