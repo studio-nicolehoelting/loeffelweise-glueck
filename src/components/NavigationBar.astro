@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+
 interface Props {
     active: string;
 }
@@ -14,6 +16,7 @@ const menu = [
 const { active } = Astro.props;
 ---
 
+<button id="mobile-nav-toggle"><Icon name="fa:bars" /></button>
 <nav id="navbar">
     {
         menu.map((el) => {
@@ -38,12 +41,31 @@ const { active } = Astro.props;
         margin-top: 2vh;
 
         @media (max-width: $mobile_max_width) {
-            width: 90%;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 3vmin 0.5vmin;
+            width: unset;
             background-color: $pappe;
+            padding-top: 0;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            margin: 0;
+            position: fixed;
+            inset: 0 0 0 30%;
+            // padding: 0 1.5em;
+            overflow-x: hidden;
+            padding-top: min(20vh, 10rem);
+            z-index: 99;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 200ms ease-in-out;
+
+            @supports (backdrop-filter: blur(1rem)) {
+                background-color: rgba($pappe, 50%);
+                backdrop-filter: blur(1rem);
+            }
+        }
+
+        &.mobile-visible {
+            transform: translateX(0%);
         }
     }
 
@@ -55,17 +77,25 @@ const { active } = Astro.props;
         font-size: 1.3rem;
         font-family: "TrashHand";
 
+        // @media (max-width: $mobile_max_width) {
+        //     text-align: center;
+        //     width: fit-content;
+        //     max-width: 100%;
+        //     font-size: 3rem;
+        //     padding: 0.5vmin 2vmin;
+        //     margin: 0 auto;
+        //     max-width: 80%;
+        //     border: 4px solid var(--border-color);
+        // }
         @media (max-width: $mobile_max_width) {
-            text-align: center;
-            width: fit-content;
-            max-width: 100%;
-            font-size: 3rem;
-            padding: 0.5vmin 2vmin;
-            margin: 0.5vmin;
-            border: 4px solid var(--border-color);
-        }
-        @media (max-width: calc($mobile_max_width * 0.75)) {
+            text-align: end;
             font-size: 2rem;
+            word-wrap: break-word;
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+            width: 80%;
+            font-size: 10vw;
+            border: none;
         }
     }
 
@@ -74,8 +104,8 @@ const { active } = Astro.props;
         font-weight: normal;
 
         @media (max-width: $mobile_max_width) {
-            --border-color: #{darken($active, 15%)};
             color: $background;
+            border-bottom: 2px solid $background;
         }
     }
 
@@ -83,7 +113,6 @@ const { active } = Astro.props;
         color: $pappe;
 
         @media (max-width: $mobile_max_width) {
-            --border-color: #{$background};
             color: $background;
         }
 
@@ -92,7 +121,45 @@ const { active } = Astro.props;
 
             @media (max-width: $mobile_max_width) {
                 color: darken($background, 50%);
+                border-bottom: 2px solid $background;
             }
         }
     }
+
+    #mobile-nav-toggle {
+        position: absolute;
+        width: 3rem;
+        aspect-ratio: 1;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 100;
+        border: 2px darken($pappe, 20%) solid;
+        display: none;
+        background-color: $pappe;
+        color: unset;
+        padding: 0.25rem;
+        border-radius: 20%;
+
+        svg {
+            padding-top: 3px;
+            :global(*) {
+                fill: #d9d9d9;
+            }
+        }
+
+        @media (max-width: $mobile_max_width) {
+            display: block;
+        }
+    }
 </style>
+
+<script>
+    const nav = document.querySelector("nav#navbar") as HTMLElement;
+    const navToggle = document.querySelector(
+        "#mobile-nav-toggle"
+    ) as HTMLButtonElement;
+
+    navToggle.addEventListener("click", () => {
+        nav.classList.toggle("mobile-visible");
+    });
+</script>
