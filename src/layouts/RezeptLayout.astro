@@ -86,31 +86,6 @@ const { name, image, zutaten, kommentar, tags } = Astro.props;
         >
         <Footer />
     </div>
-    <div id="print" aria-hidden>
-        <h1 class="name">{name}</h1>
-        <div class="container">
-            <Image src={image} alt={"Bild von " + name} quality="mid" />
-            <div class="zutaten">
-                <h4>{zutaten[0]}</h4>
-                <ul>
-                    {
-                        zutaten.slice(1).map((z, i) => {
-                            if (/^!/.test(z))
-                                return (
-                                    <span class="sectionHeader">
-                                        {z.replace(/^!/, "")}
-                                    </span>
-                                );
-                            else if (/^\s*$/.test(z)) return <span />;
-                            else return <li class="zutat">{z}</li>;
-                        })
-                    }
-                </ul>
-            </div>
-            <div class="zubereitung"><slot /></div>
-            <div class="kommentar">{kommentar}</div>
-        </div>
-    </div>
 </Base>
 
 <style lang="scss">
@@ -159,7 +134,7 @@ const { name, image, zutaten, kommentar, tags } = Astro.props;
             grid-gap: 1vmin;
             margin-top: 2.5vmin;
 
-            @media (max-width: $mobile_max_width) {
+            @media only screen and (max-width: $mobile_max_width) {
                 grid-template-columns: auto;
                 /* grid-template-columns: auto 3fr; */
                 grid-template-rows: repeat(5, auto);
@@ -295,60 +270,92 @@ const { name, image, zutaten, kommentar, tags } = Astro.props;
         // }
     }
 
-    #print {
-        display: none;
-        background-color: white;
-        min-height: 297mm;
-        width: 210mm;
-        padding: 2cm;
-
-        h1 {
-            text-align: center;
-            font-size: 50pt;
-            font-family: "TrashHand";
-            margin-top: -1.5cm;
+    @media print {
+        :global(body) {
+            background-color: unset;
         }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            grid-template-rows: auto auto auto;
-            grid-template-areas:
-                "img zutaten"
-                "zubereitung zubereitung"
-                "kommentar kommentar";
-            grid-row-gap: 1cm;
-            margin-top: 1cm;
-
-            img {
-                width: 100%;
-                height: auto;
-                grid-area: img;
-            }
-
-            .zutaten {
-                grid-area: zutaten;
-                margin-left: 0.5cm;
-
-                ul {
-                    list-style: none;
-                }
-            }
-            .zubereitung {
-                grid-area: zubereitung;
-            }
-            .kommentar {
-                grid-area: kommentar;
-            }
+        :global(footer#footer) {
+            display: none !important;
         }
-    }
-    body.print {
-        background-color: initial;
 
         #page {
-            display: none;
-        }
-        #print {
-            display: block;
+            margin-bottom: 0;
+            background-color: white;
+            min-height: 297mm;
+            width: 210mm;
+            padding: 2cm;
+
+            header {
+                display: block;
+                margin-top: -1.5cm;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 0;
+                padding: 0;
+                background-color: unset;
+                max-width: 100%;
+
+                .heading {
+                    text-align: center;
+                    font-size: 50pt;
+                    font-family: "TrashHand";
+                    width: 100%;
+                }
+
+                .backBtn {
+                    display: none;
+                }
+            }
+            #printBtn {
+                display: none;
+            }
+            .container {
+                margin-left: 0;
+                margin-right: 0;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: auto auto auto;
+                grid-template-areas:
+                    "img zutaten"
+                    "zubereitung zubereitung"
+                    "kommentar kommentar";
+                grid-row-gap: 1cm;
+                margin-top: 1cm;
+
+                img {
+                    display: block;
+                    max-width: 100%;
+                    margin: 0 auto;
+                    object-fit: cover;
+                    position: unset !important;
+                    color: unset !important;
+                    width: 100%;
+                    height: auto;
+                }
+                > *:not(img) {
+                    background-color: unset;
+                    padding: 0;
+                }
+
+                .zutaten {
+                    margin-left: 0.5cm;
+
+                    ul {
+                        list-style: none;
+
+                        > li {
+                            margin-left: 0;
+                        }
+                    }
+                }
+                .zubereitung {
+                }
+                .kommentar {
+                }
+                .tags {
+                    display: none;
+                }
+            }
         }
     }
 </style>
