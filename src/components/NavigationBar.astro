@@ -154,12 +154,22 @@ const { active } = Astro.props;
 </style>
 
 <script>
-    const nav = document.querySelector("nav#navbar") as HTMLElement;
-    const navToggle = document.querySelector(
+    let navToggleBtn = document.querySelector(
         "#mobile-nav-toggle"
     ) as HTMLButtonElement;
 
-    navToggle.addEventListener("click", () => {
-        nav.classList.toggle("mobile-visible");
+    document.addEventListener("astro:page-load", () => {
+        navToggleBtn = document.querySelector(
+            "#mobile-nav-toggle"
+        ) as HTMLButtonElement;
+        navToggleBtn.addEventListener("click", toggleNav);
     });
+
+    navToggleBtn.addEventListener("click", toggleNav);
+
+    function toggleNav() {
+        const nav = document.querySelector("nav#navbar") as HTMLElement;
+        console.log("click");
+        nav.classList.toggle("mobile-visible");
+    }
 </script>
