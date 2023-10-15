@@ -67,7 +67,7 @@ export default {
         globPatterns: [
             "**/*.{css,js,html,svg,png,ico,txt,webp,TTF,woff2,avif}",
         ],
-        globIgnores: ["404/index.html"],
+        globIgnores: ["404/index.html", "/404/"],
     },
     // devOptions: {
     //     enabled: true,

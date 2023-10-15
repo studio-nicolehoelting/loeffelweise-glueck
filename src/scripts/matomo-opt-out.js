@@ -86,7 +86,7 @@ function showContent(consent, errorMessage = null, useTracker = false) {
             });
             useTracker.id = "trackVisits";
             useTracker.type = "checkbox";
-            useTracker.checked = "checked";
+            useTracker.checked = true;
             content.push(useTracker);
         } else {
             // content +=
@@ -98,7 +98,7 @@ function showContent(consent, errorMessage = null, useTracker = false) {
             });
             useTracker.id = "trackVisits";
             useTracker.type = "checkbox";
-            useTracker.checked = "checked";
+            useTracker.checked = true;
             content.push(useTracker);
         }
         // content +=
@@ -108,8 +108,8 @@ function showContent(consent, errorMessage = null, useTracker = false) {
         //     settings.UncheckToOptOut +
         //     "</span></strong></label>";
         let label = document.createElement("label");
-        label.for = "trackVisits";
-        label.innerHtml =
+        label.setAttribute("for", "trackVisits");
+        label.innerHTML =
             "<strong><span>" +
             settings.YouAreNotOptedOut +
             " " +
@@ -139,7 +139,6 @@ function showContent(consent, errorMessage = null, useTracker = false) {
             });
             useTracker.id = "trackVisits";
             useTracker.type = "checkbox";
-            useTracker.checked = "checked";
             content.push(useTracker);
         } else {
             // content +=
@@ -151,7 +150,6 @@ function showContent(consent, errorMessage = null, useTracker = false) {
             });
             useTracker.id = "trackVisits";
             useTracker.type = "checkbox";
-            useTracker.checked = "checked";
             content.push(useTracker);
         }
         // content +=
@@ -161,8 +159,8 @@ function showContent(consent, errorMessage = null, useTracker = false) {
         //     settings.CheckToOptIn +
         //     "</span></strong></label>";
         let label = document.createElement("label");
-        label.for = "trackVisits";
-        label.innerHtml =
+        label.setAttribute("for", "trackVisits");
+        label.innerHTML =
             "<strong><span>" +
             settings.YouAreOptedOut +
             " " +
