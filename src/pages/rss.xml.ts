@@ -3,7 +3,9 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
-const parser = new MarkdownIt();
+const parser = new MarkdownIt({
+    html: true,
+});
 
 export const GET: APIRoute = async (context) => {
     const items = await getCollection("rezepte").then((collection) =>

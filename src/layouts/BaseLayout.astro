@@ -1,23 +1,22 @@
 ---
 import { pwaInfo } from "virtual:pwa-info";
-import type { TransitionAnimationValue } from "astro";
 import { Head } from "astro-capo";
 import "/src/styles/styles.scss";
 import pwaSetup from "pwaSetup.ts";
+import MatomoAnalytics from "@components/MatomoAnalytics.astro";
 
 let manifest = pwaSetup.manifest || {};
 
 interface Props {
     title: string;
-    pwaMinimal?: boolean;
-    transitionAnimate?: TransitionAnimationValue;
+    noTracking?: boolean;
 }
 
-const { title, pwaMinimal = true, transitionAnimate } = Astro.props;
+const { title, noTracking = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="de" transition:animate={transitionAnimate}>
+<html lang="de">
     <Head>
         <meta charset="UTF-8" />
         <meta
@@ -62,7 +61,7 @@ const { title, pwaMinimal = true, transitionAnimate } = Astro.props;
             href="/rss.xml"
         />
         <title>{title}</title>
-        {pwaMinimal && <script src="/src/scripts/pwa.ts" type="module" />}
+        {!noTracking && <MatomoAnalytics />}
         <slot name="head" />
     </Head>
     <body>
