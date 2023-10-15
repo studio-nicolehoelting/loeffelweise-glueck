@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Base from "./BaseLayout.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import Footer from "../components/Footer.astro";
@@ -14,8 +13,7 @@ interface Props {
 const { title, activePage, buttonToTop } = Astro.props;
 ---
 
-<Base title={title} pwaMinimal={false}>
-    <ViewTransitions slot="head" />
+<Base title={title}>
     <slot name="head" slot="head" />
     <slot name="before-navbar" />
     <NavigationBar active={activePage} />

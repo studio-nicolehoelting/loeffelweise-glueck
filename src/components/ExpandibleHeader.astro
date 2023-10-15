@@ -29,7 +29,9 @@ let { img, subtitle, subtitleStyle = "" } = Astro.props;
     const mehrLesen = document.getElementById("mehrLesen");
     const textExpand = document.getElementById("textExpand");
     let hidden = true;
-    mehrLesen?.addEventListener("click", () => {
+
+    const expandHeader = () => {
+        console.log("expand header");
         if (hidden) {
             textExpand?.classList.remove("closed");
             hidden = false;
@@ -37,7 +39,9 @@ let { img, subtitle, subtitleStyle = "" } = Astro.props;
             textExpand?.classList.add("closed");
             hidden = true;
         }
-    });
+    };
+
+    mehrLesen?.addEventListener("click", expandHeader);
 </script>
 
 <style lang="scss">
