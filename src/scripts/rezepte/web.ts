@@ -11,6 +11,7 @@ import {
 const searchOptions: Fuse.IFuseOptions<Rezept> = {
     includeScore: true,
     threshold: 0.6,
+    minMatchCharLength: 4,
     keys: [{ name: "name", weight: 2 }, "slug", "tags"],
 };
 
