@@ -127,7 +127,7 @@ const { active } = Astro.props;
     }
 
     #mobile-nav-toggle {
-        position: absolute;
+        position: fixed;
         width: 3rem;
         aspect-ratio: 1;
         top: 1.5rem;
@@ -169,7 +169,6 @@ const { active } = Astro.props;
 
     function toggleNav() {
         const nav = document.querySelector("nav#navbar") as HTMLElement;
-        console.log("click");
         nav.classList.toggle("mobile-visible");
     }
 </script>
