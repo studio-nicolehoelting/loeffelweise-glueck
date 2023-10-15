@@ -2,7 +2,7 @@
 import Base from "@layouts/BaseLayout.astro";
 ---
 
-<Base title="Datenschutz - Impressum" pwaMinimal={false}>
+<Base title="Datenschutz - Impressum">
     <div class="container">
         <div class="impressum">
             <div class="content">
@@ -107,6 +107,8 @@ import Base from "@layouts/BaseLayout.astro";
                 Schritte im Falle der unverlangten Zusendung von
                 Werbeinformationen, etwa durch Spam-Mails, vor.
                 <br />
+                <div id="matomo-opt-out"></div>
+                <script src="@scripts/matomo-opt-out.js"></script>
                 <br />
                 <h3>DATENSCHUTZRICHTLINIE</h3>
                 <br />
@@ -332,6 +334,16 @@ import Base from "@layouts/BaseLayout.astro";
         margin: 10px;
         overflow-y: hidden;
 
+        @media (max-width: $mobile_max_width) {
+            grid-template-columns: auto;
+            overflow-y: auto;
+            height: auto;
+            grid-template-areas:
+                "impressum"
+                "links"
+                "datenschutz";
+        }
+
         > div {
             background-color: $pappe;
             text-align: center;
@@ -345,6 +357,13 @@ import Base from "@layouts/BaseLayout.astro";
                 width: 100%;
                 padding: 1cm;
                 overflow-y: auto;
+
+                @media (max-width: $mobile_max_width) {
+                    max-height: unset;
+                    position: initial;
+                    top: unset;
+                    transform: unset;
+                }
 
                 h3 {
                     font-size: 3em;
