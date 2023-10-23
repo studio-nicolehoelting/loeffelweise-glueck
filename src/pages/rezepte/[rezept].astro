@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 import RezeptLayout from "@layouts/RezeptLayout.astro";
 import RezeptSchema from "@components/rezepte/RezeptSchema.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
 
 export const getStaticPaths = (async () => {
     const rezepte = await getCollection("rezepte");
@@ -30,6 +31,13 @@ const Content = await rezept.render().then((c) => c.Content);
 
 const zubereitungSplit =
     rezept.body.split("\n").filter((z) => z.length > 0) ?? [];
+
+const limitKommentar = (kommentar: string) => {
+    if (kommentar.length > 50) {
+        return kommentar.slice(0, 50) + "...";
+    }
+    return kommentar;
+};
 ---
 
 <RezeptLayout
@@ -40,6 +48,19 @@ const zubereitungSplit =
     tags={rezept.data.tags}
     zutaten={rezept.data.zutaten}
 >
+    <OpenGraphTags
+        slot="head"
+        title={rezept.data.name + " - Löffelweise Glück"}
+        description={rezept.data.kommentar
+            ? limitKommentar(rezept.data.kommentar)
+            : "Unser Rezept zum Nachmachen"}
+        image={rezept.data.bild}
+        imageQuality="mid"
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <RezeptSchema
         name={rezept.data.name}
         image={rezept.data.bild}

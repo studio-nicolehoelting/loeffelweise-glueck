@@ -1,4 +1,5 @@
 ---
+import type { ImageQuality } from "astro";
 import { getImage } from "astro:assets";
 type CustomMeta = {
     [key: string]: string;
@@ -9,6 +10,7 @@ interface Props {
     description?: string;
     type?: string;
     image: ImageMetadata;
+    imageQuality?: ImageQuality;
     url?: string;
     slot?: string;
     custom?: CustomMeta;
@@ -19,12 +21,13 @@ const {
     description,
     type = "website",
     image,
+    imageQuality: quality = "low",
     url = Astro.url,
     slot,
     custom,
 } = Astro.props;
 
-const optimized_img = await getImage({ src: image, quality: "low" });
+const optimized_img = await getImage({ src: image, quality });
 ---
 
 <Fragment {slot}>
