@@ -4,6 +4,8 @@ import DefaultLayout from "@layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import TextWithImageItem from "@components/TextWithImageItem.astro";
 import HungerText from "@components/texte/Hunger.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
+import macchiatoImg from "@images/leseglueck/macchiato.jpg";
 
 const texte = (await getCollection("leseglueck")).sort(
     (a, b) => b.data.order - a.data.order
@@ -15,6 +17,16 @@ const texte = (await getCollection("leseglueck")).sort(
     activePage="/leseglueck"
     buttonToTop
 >
+    <OpenGraphTags
+        slot="head"
+        title="Lesegück - Löffelweise Glück"
+        description="Jedes Kochbuch ist ein Schatz!"
+        image={macchiatoImg}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <Header />
     {
         texte.map(async (g) => {

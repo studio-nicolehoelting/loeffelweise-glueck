@@ -4,6 +4,7 @@ import DefaultLayout from "@layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import TextWithImageItem from "@components/TextWithImageItem.astro";
 import HungerText from "@components/texte/Hunger.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
 
 const geschichten = (await getCollection("geschichten")).sort(
     (a, b) => b.data.order - a.data.order
@@ -15,6 +16,16 @@ const geschichten = (await getCollection("geschichten")).sort(
     activePage="/geschichten"
     buttonToTop
 >
+    <OpenGraphTags
+        slot="head"
+        title="Geschichten - Löffelweise Glück"
+        description="Kitchen-Stories, Reiseberichte, dies&das..."
+        image={geschichten[0].data.images[0]}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <Header />
     {
         geschichten.map(async (g) => {

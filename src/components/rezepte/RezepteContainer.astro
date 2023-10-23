@@ -1,18 +1,13 @@
 ---
+import { type CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon";
-import { getCollection } from "astro:content";
 import RezeptDisplay from "./RezeptDisplay.astro";
-import {
-    sortByPraesentiert,
-    toClientsideRezeptNoImage,
-} from "@scripts/rezepte/common";
 
-const rezepte = (await getCollection("rezepte")).sort((a, b) => {
-    return sortByPraesentiert(
-        { item: toClientsideRezeptNoImage(a) },
-        { item: toClientsideRezeptNoImage(b) }
-    );
-});
+interface Props {
+    rezepte: CollectionEntry<"rezepte">[];
+}
+
+const { rezepte } = Astro.props;
 ---
 
 <div id="searchContainer" class="searchContainer">

@@ -1,9 +1,21 @@
 ---
 import DefaultLayout from "@layouts/DefaultLayout.astro";
 import Header from "@components/index/Header.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
+import hungerImg from "@images/hunger.jpg";
 ---
 
 <DefaultLayout title="Löffelweise Glück" activePage="/">
+    <OpenGraphTags
+        slot="head"
+        title="Löffelweise Glück"
+        description="Rezepte. Fotos. Geschichten."
+        image={hungerImg}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <img
         slot="before-navbar"
         src="/images/logo-pappe.svg"

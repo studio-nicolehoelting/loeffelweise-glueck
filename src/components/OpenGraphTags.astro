@@ -1,0 +1,55 @@
+---
+import { getImage } from "astro:assets";
+type CustomMeta = {
+    [key: string]: string;
+};
+
+interface Props {
+    title: string;
+    description?: string;
+    type?: string;
+    image: ImageMetadata;
+    url?: string;
+    slot?: string;
+    custom?: CustomMeta;
+}
+
+const {
+    title,
+    description,
+    type = "website",
+    image,
+    url = Astro.url,
+    slot,
+    custom,
+} = Astro.props;
+
+const optimized_img = await getImage({ src: image, quality: "low" });
+---
+
+<Fragment {slot}>
+    <meta property="og:title" content={title} />
+    <meta property="twitter:title" content={title} />
+    {
+        description && (
+            <>
+                <meta property="og:description" content={description} />
+                <meta name="description" content={description} />
+            </>
+        )
+    }
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={optimized_img.src} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="twitter:image" content={optimized_img.src} />
+    {
+        custom &&
+            Object.entries(custom).map(([key, value]) => (
+                <meta
+                    property={key.includes(":") ? key : `og:${key}`}
+                    content={value}
+                />
+            ))
+    }
+</Fragment>

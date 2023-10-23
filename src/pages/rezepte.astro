@@ -1,7 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import DefaultLayout from "@layouts/DefaultLayout.astro";
 import Header from "@components/rezepte/Header.astro";
 import RezepteContainer from "@components/rezepte/RezepteContainer.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
+import {
+    sortByPraesentiert,
+    toClientsideRezeptNoImage,
+} from "@scripts/rezepte/common";
+
+const rezepte = (await getCollection("rezepte")).sort((a, b) => {
+    return sortByPraesentiert(
+        { item: toClientsideRezeptNoImage(a) },
+        { item: toClientsideRezeptNoImage(b) }
+    );
+});
 ---
 
 <DefaultLayout
@@ -9,6 +22,16 @@ import RezepteContainer from "@components/rezepte/RezepteContainer.astro";
     activePage="/rezepte"
     buttonToTop
 >
+    <OpenGraphTags
+        slot="head"
+        title="Rezepte - Löffelweise Glück"
+        description="Schau dir unsere Rezepte an und lass dich inspirieren."
+        image={rezepte[0].data.bild}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <Header />
-    <RezepteContainer />
+    <RezepteContainer {rezepte} />
 </DefaultLayout>

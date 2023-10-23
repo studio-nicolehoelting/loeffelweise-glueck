@@ -4,6 +4,8 @@ import DefaultLayout from "@layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import TextWithImageItem from "@components/TextWithImageItem.astro";
 import HungerText from "@components/texte/Hunger.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
+import loeffelfreundeImg from "@images/loeffelfreunde/loeffelfreunde.jpg";
 
 const texte = (await getCollection("loeffelfreunde")).sort(
     (a, b) => b.data.order - a.data.order
@@ -15,6 +17,16 @@ const texte = (await getCollection("loeffelfreunde")).sort(
     activePage="/loeffelfreunde"
     buttonToTop
 >
+    <OpenGraphTags
+        slot="head"
+        title="Löffelfreu(n)de - Löffelweise Glück"
+        description="Freunde und Freude - sooooo wichtig!"
+        image={loeffelfreundeImg}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <Header />
     {
         texte.map(async (g) => {

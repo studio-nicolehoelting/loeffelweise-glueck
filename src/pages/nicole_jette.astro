@@ -4,6 +4,8 @@ import DefaultLayout from "@layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import TextWithImageItem from "@components/TextWithImageItem.astro";
 import HungerText from "@components/texte/Hunger.astro";
+import OpenGraphTags from "@components/OpenGraphTags.astro";
+import nicoleJetteImg from "@images/nicole_jette/n&j.jpg";
 
 const texte = (await getCollection("nicole_jette")).sort(
     (a, b) => b.data.order - a.data.order
@@ -15,6 +17,16 @@ const texte = (await getCollection("nicole_jette")).sort(
     activePage="/nicole_jette"
     buttonToTop
 >
+    <OpenGraphTags
+        slot="head"
+        title="Über uns - Löffelweise Glück"
+        description="Wir stecken hinter Löffelweise Glück"
+        image={nicoleJetteImg}
+        type="website"
+        custom={{
+            "twitter:card": "summary",
+        }}
+    />
     <Header />
     {
         texte.map(async (g) => {
