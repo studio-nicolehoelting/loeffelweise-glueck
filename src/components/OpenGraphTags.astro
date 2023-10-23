@@ -27,7 +27,9 @@ const {
     custom,
 } = Astro.props;
 
-const optimized_img = await getImage({ src: image, quality });
+const baseUrl = new URL(Astro.url).origin;
+
+const optimizedImg = await getImage({ src: image, quality });
 ---
 
 <Fragment {slot}>
@@ -43,9 +45,9 @@ const optimized_img = await getImage({ src: image, quality });
     }
     <meta property="og:type" content={type} />
     <meta property="og:url" content={url} />
-    <meta property="og:image" content={optimized_img.src} />
+    <meta property="og:image" content={baseUrl + optimizedImg.src} />
     <meta property="og:locale" content="de_DE" />
-    <meta property="twitter:image" content={optimized_img.src} />
+    <meta property="twitter:image" content={baseUrl + optimizedImg.src} />
     {
         custom &&
             Object.entries(custom).map(([key, value]) => (
