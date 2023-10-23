@@ -37,7 +37,7 @@ const rezepte = (await getCollection("rezepte")).sort((a, b) => {
 </div>
 
 <div id="rezepte" class="rezepte">
-    {rezepte.map((rezept) => <RezeptDisplay id={rezept.slug} />)}
+    {rezepte.map((rezept) => <RezeptDisplay rezept={rezept} />)}
 </div>
 
 <script src="/src/scripts/rezepte/web.ts"></script>

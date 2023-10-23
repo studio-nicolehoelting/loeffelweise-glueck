@@ -6,12 +6,13 @@ import { Scrollbar } from "react-scrollbars-custom";
 interface Props {
     imgs: ImageMetadata[];
     alt_prefix: string;
+    id?: string;
 }
 
-const { imgs, alt_prefix } = Astro.props;
+const { imgs, alt_prefix, id } = Astro.props;
 ---
 
-<article class="item">
+<article class="item" {id}>
     <div class="img">
         {
             imgs.map((img, i) => (

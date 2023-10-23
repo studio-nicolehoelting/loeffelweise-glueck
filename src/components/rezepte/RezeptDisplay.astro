@@ -1,19 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import { getEntryBySlug } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 
 interface Props {
-    id: string;
+    rezept: CollectionEntry<"rezepte">;
 }
 
-const { id } = Astro.props;
-const rezept = await getEntryBySlug("rezepte", id);
-if (!rezept) {
-    throw new Error(`Rezept ${id} nicht gefunden`);
-}
+const { rezept } = Astro.props;
 ---
 
-<div class="rezeptDisplay">
+<article class="rezeptDisplay" id={rezept.slug}>
     <Image src={rezept.data.bild} alt={rezept.data.name} quality="mid" />
     <div class="text">
         <h1>{rezept.data.name}</h1>
@@ -35,7 +31,7 @@ if (!rezept) {
             </div>
         </div>
     </div>
-</div>
+</article>
 
 <style lang="scss" is:global>
     .rezeptDisplay {

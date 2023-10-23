@@ -20,7 +20,11 @@ const texte = (await getCollection("leseglueck")).sort(
         texte.map(async (g) => {
             const { Content } = await g.render();
             return (
-                <TextWithImageItem imgs={g.data.images} alt_prefix={g.slug}>
+                <TextWithImageItem
+                    imgs={g.data.images}
+                    alt_prefix={g.slug}
+                    id={g.slug}
+                >
                     <Content />
                 </TextWithImageItem>
             );
