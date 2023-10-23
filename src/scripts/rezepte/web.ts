@@ -14,6 +14,13 @@ const searchOptions: Fuse.IFuseOptions<Rezept> = {
     minMatchCharLength: 4,
     keys: [{ name: "name", weight: 2 }, "slug", "tags"],
 };
+const hashtagSearchOptions: Fuse.IFuseOptions<Rezept> = {
+    includeScore: true,
+    includeMatches: true,
+    threshold: 0.4,
+    minMatchCharLength: 3,
+    keys: ["tags"],
+};
 
 enum SortOrder {
     Praesentiert,
@@ -60,6 +67,7 @@ fetch("../rezepte.json")
     .then((res) => res.json())
     .then((rezepte: Rezept[]) => {
         const fuse = new Fuse(rezepte, searchOptions);
+        const hashtagFuse = new Fuse(rezepte, hashtagSearchOptions);
         if (searchQuery.length > 0) onSearchQueryChange(true);
 
         let searchTimeout: NodeJS.Timeout;
@@ -108,11 +116,11 @@ fetch("../rezepte.json")
                 refreshRecipes(rezepteSortiert.map((r) => r.item));
                 url.searchParams.delete("search");
             } else {
-                let searchResults = sortData(fuse.search(searchQuery));
+                let searchResults;
                 if (searchQuery.trimStart().startsWith("#"))
-                    searchResults = searchResults.filter((res) =>
-                        res.score ? res.score < 0.2 : true
-                    );
+                    searchResults = sortData(hashtagFuse.search(searchQuery));
+                else searchResults = sortData(fuse.search(searchQuery));
+
                 refreshRecipes(searchResults.map((r) => r.item));
                 url.searchParams.set("search", encodeURIComponent(searchQuery));
             }
