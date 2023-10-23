@@ -33,8 +33,8 @@ const zubereitungSplit =
     rezept.body.split("\n").filter((z) => z.length > 0) ?? [];
 
 const limitKommentar = (kommentar: string) => {
-    if (kommentar.length > 50) {
-        return kommentar.slice(0, 50) + "...";
+    if (kommentar.length > 100) {
+        return kommentar.slice(0, 100) + "...";
     }
     return kommentar;
 };
