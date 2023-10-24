@@ -1,7 +1,7 @@
 import type { VitePWAOptions } from "vite-plugin-pwa";
 
 export default {
-    mode: "development",
+    mode: process.env.NODE_ENV,
     base: "/",
     scope: "/",
     includeAssets: ["favicon.svg"],
@@ -67,8 +67,10 @@ export default {
         globPatterns: [
             "**/*.{css,js,html,svg,png,ico,txt,webp,TTF,woff2,avif}",
         ],
-        globIgnores: ["404/index.html", "/404/"],
+        globIgnores: ["404/index.html", "/404/", "/404/index.html", "404/"],
+        sourcemap: true,
     },
+    registerType: "autoUpdate",
     // devOptions: {
     //     enabled: true,
     //     navigateFallbackAllowlist: [/^\/pwa_404$/],
