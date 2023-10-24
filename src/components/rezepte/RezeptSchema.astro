@@ -27,7 +27,7 @@ const imageSrc = processedImage.src;
         "@type": "Recipe",
         author: author,
         description: description,
-        image: imageSrc,
+        image: Astro.site + imageSrc,
         recipeIngredient: zutaten,
         name: name,
         recipeInstructions: zubereitung,
