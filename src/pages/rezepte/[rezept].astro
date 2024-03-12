@@ -4,6 +4,8 @@ import { getCollection, getEntryBySlug } from "astro:content";
 import RezeptLayout from "@layouts/RezeptLayout.astro";
 import RezeptSchema from "@components/rezepte/RezeptSchema.astro";
 import OpenGraphTags from "@components/OpenGraphTags.astro";
+import { db, Review } from "astro:db";
+import { eq } from "astro:db";
 
 export const getStaticPaths = (async () => {
     const rezepte = await getCollection("rezepte");
@@ -38,6 +40,9 @@ const limitKommentar = (kommentar: string) => {
     }
     return kommentar;
 };
+
+const reviews = await db.select().from(Review).where(eq(Review.recipe, slug));
+export type ReviewsType = typeof reviews;
 ---
 
 <RezeptLayout
@@ -47,6 +52,7 @@ const limitKommentar = (kommentar: string) => {
     kommentar={rezept.data.kommentar}
     tags={rezept.data.tags}
     zutaten={rezept.data.zutaten}
+    {reviews}
 >
     <OpenGraphTags
         slot="head"
@@ -69,7 +75,18 @@ const limitKommentar = (kommentar: string) => {
         author="Löffelweise Glück"
         description={rezept.data.kommentar ?? ""}
         zubereitung={zubereitungSplit}
+        {reviews}
         slot="head"
     />
     <Content />
+    <div>
+        {
+            reviews.map(({ author, rating }) => (
+                <article>
+                    <p>Author: {author}</p>
+                    <p>{rating}</p>
+                </article>
+            ))
+        }
+    </div>
 </RezeptLayout>

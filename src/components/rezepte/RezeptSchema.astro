@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import { Schema } from "astro-seo-schema";
+import type { ReviewsType } from "src/pages/rezepte/[rezept].astro";
 interface Props {
     author: string;
     description: string;
@@ -9,16 +10,32 @@ interface Props {
     name: string;
     zubereitung: string[];
     tags: string[];
+    reviews?: ReviewsType;
 }
 
-const { author, description, image, zutaten, name, zubereitung, tags } =
-    Astro.props;
+const {
+    author,
+    description,
+    image,
+    zutaten,
+    name,
+    zubereitung,
+    tags,
+    reviews,
+} = Astro.props;
 
 const processedImage = await getImage({
     src: image,
     quality: "mid",
 });
 const imageSrc = processedImage.src;
+
+const reviewsSum = reviews
+    ?.map(({ rating }) => rating)
+    .reduce((acc, cur) => acc + cur);
+
+const reviewsAvg =
+    reviews && reviewsSum ? reviewsSum / reviews.length : undefined;
 ---
 
 <Schema
