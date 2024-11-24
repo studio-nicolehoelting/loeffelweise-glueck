@@ -1,7 +1,7 @@
 ---
-slug: rotkohlsteaks-zu-lammfilet-und-süßkartoffeln
+slug: rotkohlsteaks-zu-lammfilet-und-süsskartoffeln
 datum: 2023-12-03
-name: Rotkohlsteaks zu Lammfilet und Süßkartoffeln
+name: Rotkohlsteaks zu Lammfilet und Süsskartoffeln
 bild: ../../images/rezept/rotkohlsteaks-zu-lammfilet-und-süßkartoffeln.jpg
 kommentar: |-
     Möchtest du das Gericht vegetarisch zubereiten, gib zu Beginn gewürfelte Pastinaken oder Hokkaido-Kürbis zum Rotkohl aufs Blech und vor dem letzten Step bestreust du das Gemüse mit 200 g Feta. Auch sehr, sehr lecker!
@@ -43,7 +43,7 @@ tags:
     - update
 ---
 
-Ofen auf 180 ° C vorheizen.
+Ofen auf 180° C vorheizen.
 
 Den Rotkohl putzen, waschen, in etwa 2 cm dicke Scheiben schneiden. Falls nötig, den harten Strunk entfernen. Auf einem mit 150 ml Wasser angefüllten, tiefen Backblech verteilen. Mit Balsamessig und Olivenöl gleichmäßig beträufeln, salzen, pfeffern und für 10 Minuten im Ofen garen.
 

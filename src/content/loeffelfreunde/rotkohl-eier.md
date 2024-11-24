@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 28
 images:
     - ../../images/loeffelfreunde/rotkohl-eier.jpg
 ---

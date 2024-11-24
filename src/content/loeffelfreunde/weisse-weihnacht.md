@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 100
 images:
     - ../../images/loeffelfreunde/weisse_weihnacht.jpg
 ---
@@ -15,8 +15,7 @@ Ein kulinarisches Geschenk der besonderen Art - wir verschenken ein
 GEFÜHL, eine Weiße Weihnacht! <br />
 <br />
 Eine kräftige, weiße Papiertüte beschriften wir mit einem lieben
-Gruß, backen{' '}
-<a href="/rezepte/snowball_cookies/" target="_blank">
+Gruß, backen <a href="/rezepte/snowball_cookies/" target="_blank">
     Snowball-Cookies
 </a>
 , einen Quarkstollen, gießen weiße Schokolöffel und kaufen viele

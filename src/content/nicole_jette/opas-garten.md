@@ -15,7 +15,7 @@ images:
 Alles, was unsere Genießerherzen höher schlagen lässt, wächst in
 Nachbars Garten.
 <br />
-Unser lieber Opa HANS ist Gärtner. Gärtner mit ganz viel Herz -
+Unser lieber Opa HANS (gestorben 11.11.2024) ist Gärtner. Gärtner mit ganz viel Herz -
 Bienenretter und Vogelschützer. In seinem HIMMELREICH baut er alles
 an, was wir uns für unsere Kochideen wünschen: In den Frühbeeten
 wachsen knackige Salate & gesundes Gemüse.

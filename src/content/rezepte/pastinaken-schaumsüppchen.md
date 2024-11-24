@@ -43,4 +43,4 @@ tags:
     - kardamom
 ---
 
-Schalotten putzen, in Ringe schneiden. Pastinaken schälen, grob würfeln. Birnen halbieren, schälen, Kerngehäuse entfernen und grob zerkleinern. In einem großen Topf Pastinaken im Öl glasig dünsten, Birnen und Pastinaken zufügen, kurz mitdünsten. Mit Saft, Prosecco, Fond oder Brühe, Apfelessig und 3/4 l Wasser ablöschen und aufkochen. Hitze reduzieren. Salz, Pfeffer und Kardamom zugeben und etwa 25 Minuten bei niedriger Temperatur köcheln. Suppe vom Herd nehmen, mit dem Stabmixer pürieren. Abschmecken, ggfs. mit Salz und Pfeffer nachwürzen.
+Schalotten putzen, in Ringe schneiden. Pastinaken schälen, grob würfeln. Birnen halbieren, schälen, Kerngehäuse entfernen und grob zerkleinern. In einem großen Topf Schalotten im Öl glasig dünsten, Birnen und Pastinaken zufügen, kurz mitdünsten. Mit Saft, Prosecco, Fond oder Brühe, Apfelessig und 3/4 l Wasser ablöschen und aufkochen. Hitze reduzieren. Salz, Pfeffer und Kardamom zugeben und etwa 25 Minuten bei niedriger Temperatur köcheln. Suppe vom Herd nehmen, mit dem Stabmixer pürieren. Abschmecken, ggfs. mit Salz und Pfeffer nachwürzen.
