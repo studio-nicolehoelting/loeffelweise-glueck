@@ -1,5 +1,5 @@
 ---
-order: 100
+order: 28
 images:
     - ../../images/loeffelfreunde/weisse_weihnacht.jpg
 ---
